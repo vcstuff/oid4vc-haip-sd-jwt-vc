@@ -45,7 +45,7 @@ Table of Contents
        7.2.1.  Cryptographic Holder Binding between VC and VP
    8.  Crypto Suites
    9.  Implementations Considerations
-     9.1.  Differences between sd-jwt-vc and mdoc
+     9.1.  Validity Period of the Signature and the Claim Values
    10. Normative References
    Appendix A.  Combined Issuance of SD-JWT VC and mdocs
    Appendix B.  JSON Schema for the supported Presentation Definition
@@ -70,10 +70,9 @@ Table of Contents
    and OpenID for Verifiable Presentations (OID4VP) as the base
    protocols for issuance and presentation of Credentials.  Credential
    formats used in the profile are W3C Verifiable Credentials (VC Data
-   Model v2.0) secured using Selective Disclosure for JWTs (SD-JWT), and
-   ISO/IEC 18013-5 mdocs.  A full list of the open standards used in
-   this profile can be found in Overview of the Open Standards
-   Requirements.
+   Model v2.0) secured using Selective Disclosure for JWTs (SD-JWT).  A
+   full list of the open standards used in this profile can be found in
+   Overview of the Open Standards Requirements.
 
 1.1.  Audience Target audience/Usage
 
@@ -457,10 +456,11 @@ Table of Contents
 
 9.  Implementations Considerations
 
-9.1.  Differences between sd-jwt-vc and mdoc
+9.1.  Validity Period of the Signature and the Claim Values
 
-   Note: iat and exp claims express the validity period of both the
-   signature and the claim values.
+   iat and exp JWT claims express both the validity period of both the
+   signature and the claims about the subject, unless there is a
+   separate claim used to express the validity of the claims.
 
 10.  Normative References
 
@@ -532,8 +532,8 @@ Table of Contents
 
 Appendix A.  Combined Issuance of SD-JWT VC and mdocs
 
-   *  If dual issuance is required, Batch Credential Endpoint MUST be
-      supported.
+   *  If combined issuance is required, Batch Credential Endpoint MUST
+      be supported.
 
 Appendix B.  JSON Schema for the supported Presentation Definition
              properties
