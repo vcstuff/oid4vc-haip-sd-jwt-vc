@@ -1,0 +1,537 @@
+{
+  "magic": "E!vIA5L86J2I",
+  "timestamp": "2023-05-18T00:25:39.009849+00:00",
+  "repo": "vcstuff/high-assurance-profile",
+  "labels": [
+    {
+      "name": "bug",
+      "description": "Something isn't working",
+      "color": "d73a4a"
+    },
+    {
+      "name": "documentation",
+      "description": "Improvements or additions to documentation",
+      "color": "0075ca"
+    },
+    {
+      "name": "duplicate",
+      "description": "This issue or pull request already exists",
+      "color": "cfd3d7"
+    },
+    {
+      "name": "enhancement",
+      "description": "New feature or request",
+      "color": "a2eeef"
+    },
+    {
+      "name": "good first issue",
+      "description": "Good for newcomers",
+      "color": "7057ff"
+    },
+    {
+      "name": "help wanted",
+      "description": "Extra attention is needed",
+      "color": "008672"
+    },
+    {
+      "name": "invalid",
+      "description": "This doesn't seem right",
+      "color": "e4e669"
+    },
+    {
+      "name": "question",
+      "description": "Further information is requested",
+      "color": "d876e3"
+    },
+    {
+      "name": "wontfix",
+      "description": "This will not be worked on",
+      "color": "ffffff"
+    },
+    {
+      "name": "pending-close",
+      "description": "",
+      "color": "860DE9"
+    }
+  ],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOJcWsFs5lUzvJ",
+      "title": "Keys for DPoP should be attested to be highly secure",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/1",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Let's make sure that keys we use for DPoP can be directly attested by the key attestation to be protected by the secure key store of the device (e.g. Secure Element, Secure Enclave etc.).",
+      "createdAt": "2023-05-08T10:04:47Z",
+      "updatedAt": "2023-05-16T09:55:48Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "let's also make sure it is optimization and not a requirement in client attestation draft.",
+          "createdAt": "2023-05-13T15:34:42Z",
+          "updatedAt": "2023-05-13T15:34:42Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "Would that be a DPoP extension?",
+          "createdAt": "2023-05-16T09:55:48Z",
+          "updatedAt": "2023-05-16T09:55:48Z"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOJcWsFs5l1z0B",
+      "title": "A term alternative to \"verifiable credentials\"..?",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/2",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "need a term that can be used to refer to both verifiable credentials and mdocs, that is not \"Verifiable Credentials\"\r\nsome suggestions: \r\n- digital credentials\r\n- Electronic attestations of attributes\r\n- verifiable attestations",
+      "createdAt": "2023-05-13T13:31:06Z",
+      "updatedAt": "2023-05-16T09:54:37Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "\"Electronic attestations of attributes\" sounds good. However in the eIDAS context is one category of credentials whereas the other one is called \"Person Identification Data\" - so EAA would not be perceived as term for all kinds of credentials.\r\n\"verifiable attestations\" to me sounds very much like EAA.\r\n\r\nI think \"digital credentials\" is the best option.   \r\n\r\nPS: you know we will need to change the name of our spec family again once we pick a new term  ;-). I'm fine with that, just stating the obvious. ",
+          "createdAt": "2023-05-16T09:54:36Z",
+          "updatedAt": "2023-05-16T09:54:36Z"
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOJcWsFs5l1z4o",
+      "title": "[ed]",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/3",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "URLs to \"eIDAS 2.0, California Department of Motor Vehicles, Open Wallet Foundation (OWF), IDunion, GAIN\"",
+      "createdAt": "2023-05-13T13:32:14Z",
+      "updatedAt": "2023-05-13T13:32:14Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOJcWsFs5l10xy",
+      "title": "Align and expand Scenarios/Business Requirements section ",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/4",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-05-13T13:42:24Z",
+      "updatedAt": "2023-05-17T15:12:25Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "one from @awoie \r\n```\r\n- customer applies for VC, in-person  (pre-authz) or remote (authz code)\r\n- wallet requests access_token/credential\r\n- downstream process kicks off and decision needs to be made by some special officer and cannot be automated based on prior decisions/authorizations\r\n- wallet has to wait until decision was made\r\n- special officer makes decision\r\n- wallet requests token/credential again and token/credential endpoint can answer with final response.\r\n```",
+          "createdAt": "2023-05-15T21:57:30Z",
+          "updatedAt": "2023-05-15T21:57:30Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "also from @awoie \r\n\r\n> Would it make sense to specifically describe the following scenarios:\r\n> - high-security in-person provisioning with/without human in the loop in downstream processes\r\n> - high-security remote provisioning with/without human in the loop in downstream processes\r\n> - high-security online presentment, same device, cross-device (if we have a good solution for that).\r\n> \r\n> Would it make sense to suggest assurance levels according to eIDAS/NIST?",
+          "createdAt": "2023-05-17T15:12:25Z",
+          "updatedAt": "2023-05-17T15:12:25Z"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "I_kwDOJcWsFs5l15aj",
+      "title": "Note on JSON serialization and JAdES",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/5",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-05-13T14:38:43Z",
+      "updatedAt": "2023-05-13T14:38:43Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 6,
+      "id": "I_kwDOJcWsFs5l17Ho",
+      "title": "issuer identifier - always HTTPS URL..?",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/6",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Which HTTPS URL does the issuer use when x.509 is used? SAN? if we mandate issuer to do both x.509 and SAN, does that mean issuers must make sure /JWT-issuer is hosted under SAN? Isn\u2019t that pretty limiting? (I am not necessarily opposed to \u201ciss is always a URL, just trying to understand the implications)",
+      "createdAt": "2023-05-13T14:53:32Z",
+      "updatedAt": "2023-05-16T10:40:52Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "According to the feedback we got so far on the concept, I think SNA is the way to go. \r\n\r\nI see value in the proposal @tplooker made to always use the same kind of `iss` value. It is especially beneficial if the credential has both the x.509 cert chain and support for web based key resolution, since the verifier can choose what data to use for validation. \r\n\r\nIf the credential only has x.509, it doesn't matter in the end what identifier we use as long as the leaf cert binds that identifier to the public key of the issuer. So using the HTTPS URL doesn't hurt at least and might be inline with the way domain validated certs (and cWACs? @paulbastian) work. \r\n\r\nEven HTTPS URL with paths should work. I checked https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.6 and did not find an indication that this would not be possible. I mention it because as far as I remember someone stated that a SNA would only contain a URL with FQN but no path. \r\n\r\n> Isn\u2019t that pretty limiting?\r\nIn my opinion, the issuer can freely choose the URL so it should not become a limitation. However, I also think we need implementors' feedback. ",
+          "createdAt": "2023-05-16T09:49:48Z",
+          "updatedAt": "2023-05-16T09:49:48Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "NONE",
+          "body": "I agree using iss field for x509 as well. It has the advantage of having a common identifier for both mechanisms. EV and QWAC work the same way",
+          "createdAt": "2023-05-16T10:40:51Z",
+          "updatedAt": "2023-05-16T10:40:51Z"
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOJcWsFs5l1_ZB",
+      "title": "issuer key resolution requirements for each entity:",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/7",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "there are currently two options for issuer key resolution: web PKI based one and X.509 based one. current text states, \"iissuer supports one of the options, wallet and verifier support both\", but @tlodderstedt is right that this will make the life of verifiers (and wallets) really hard. \r\nprobably need to discuss what it means for the issuer to support both x.509 and web pki based...",
+      "createdAt": "2023-05-13T15:18:02Z",
+      "updatedAt": "2023-05-13T15:18:02Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOJcWsFs5l2Ajy",
+      "title": "client_id_scheme and client_assertion_type",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/8",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "need to discuss the relationship between `client_id_scheme` and `client_assertion_type`. \r\n- one way to think is: client_assertion_type acts as client_id_scheme so no need for a client_id_scheme\r\n- another is: client_id_scheme is about how to process client_id and how to obtain client metadata, while client_assertion_type is which client authentication type to use, so they cannot be the same.\r\n\r\nmaybe the question is, when client_assertion_type is wallet attestation, do we expect client metadata to be obtained from wallet attestation or can there be other options?",
+      "createdAt": "2023-05-13T15:31:23Z",
+      "updatedAt": "2023-05-16T09:35:46Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "In my opinion, `client_id_scheme` and `client_assertion_type` serve the same purpose. \r\n\r\n> maybe the question is, when client_assertion_type is wallet attestation, do we expect client metadata to be obtained from wallet attestation or can there be other options?\r\n\r\nWhat client metadata do you mean? redirect URI, crypto algorithms? I would expect them to be communicated using the standard mechanisms, either oob or using a suitable parameter (just saw `client_metadata` is not in the VCI spec yet). ",
+          "createdAt": "2023-05-16T09:35:46Z",
+          "updatedAt": "2023-05-16T09:35:46Z"
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "I_kwDOJcWsFs5l2Am6",
+      "title": "define \"ephemeral credential\" as a term..?",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/9",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "from @peppelinux",
+      "createdAt": "2023-05-13T15:31:58Z",
+      "updatedAt": "2023-05-13T15:32:11Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "i personally don't think it is necessary..",
+          "createdAt": "2023-05-13T15:32:10Z",
+          "updatedAt": "2023-05-13T15:32:10Z"
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "I_kwDOJcWsFs5l2CwV",
+      "title": "`client_id` value of the wallet during issuance",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/10",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [
+        "pending-close"
+      ],
+      "body": "The text current wallet attestation draft says:\r\n> The JWT MUST contain a \"sub\" (subject) claim with a value corresponding to the \"client_id\" of the OAuth client.\r\n\r\nthe thing is.. when there has been no pre-existing relationship between the issuer and the wallet, which `client_id` value does the wallet uses..?",
+      "createdAt": "2023-05-13T15:55:49Z",
+      "updatedAt": "2023-05-16T09:17:25Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "discussed with @tlodderstedt. `sub` is a self-attested value from the wallet front end to the wallet backend. the issuer does not really need to understand `sub`, more imp for audit trails and user consent. ",
+          "createdAt": "2023-05-13T16:41:15Z",
+          "updatedAt": "2023-05-13T16:41:15Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "@paulbastian what do you do in your current implementation?",
+          "createdAt": "2023-05-16T09:17:25Z",
+          "updatedAt": "2023-05-16T09:17:25Z"
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "I_kwDOJcWsFs5l2GA9",
+      "title": "value of `client_id_scheme`...",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/11",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The value of the `client_id_scheme` parameter MUST be `wallet_attestation`.",
+      "createdAt": "2023-05-13T16:42:02Z",
+      "updatedAt": "2023-05-16T09:30:36Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "Where would we use this client id scheme?",
+          "createdAt": "2023-05-14T07:54:59Z",
+          "updatedAt": "2023-05-16T09:30:36Z"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "I_kwDOJcWsFs5l2G0q",
+      "title": "relationship between `sub` and pop key in wallet attestation",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/12",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "@peppelinux: a client_id or a sub value for this use case can be derived with a simple thumbprint value of the cnf.jwk, just to bind the identity of the wallet instance to one of its public key\r\n\r\nI would suggest to leave this choice whether to bind sub and pop key to the wallet frontend",
+      "createdAt": "2023-05-13T16:54:14Z",
+      "updatedAt": "2023-05-13T16:54:14Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 13,
+      "id": "I_kwDOJcWsFs5l9KTr",
+      "title": "[placeholder] add trust mechanism in the future versions ",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/13",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "currently out of scope, but agreement to add before final",
+      "createdAt": "2023-05-15T17:41:50Z",
+      "updatedAt": "2023-05-16T09:29:48Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "I think the profile with key resolution and identifier authentication adds a lot in terms of interoperability. On the other hand, there are so many different technical means to manage trust, we will have a hard time to pin down THE one or two to endorse by the profile. I don't think we should delay publication due to this topic. ",
+          "createdAt": "2023-05-16T09:29:48Z",
+          "updatedAt": "2023-05-16T09:29:48Z"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "I_kwDOJcWsFs5l9LIs",
+      "title": "Value of a custom URL scheme",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/14",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "current value is `haip` standing for \"high assurance interop profile\".\r\n\r\nif you come up with a better one, I will buy you a drink",
+      "createdAt": "2023-05-15T17:44:43Z",
+      "updatedAt": "2023-05-15T17:44:43Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 15,
+      "id": "I_kwDOJcWsFs5l-o5x",
+      "title": "communicating extra wallet capabilities when obtaining the request object ",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/15",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "verifier sends a request_uri, when wallet hits that request_uri, it can communicate information such as version control. maybe using the headers. not urgent",
+      "createdAt": "2023-05-15T22:11:01Z",
+      "updatedAt": "2023-05-15T22:11:01Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 16,
+      "id": "I_kwDOJcWsFs5l-5KS",
+      "title": "using a VC for Verifier Attestation",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/16",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "the core idea is: \"Verifier obtains a VC from a trusted third party, a VC includes a key material of a Verifier, authorization request is signed using that key\". need to define a schema for that VC.",
+      "createdAt": "2023-05-15T23:33:45Z",
+      "updatedAt": "2023-05-16T15:27:05Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "this is what I have now: \"When the Client Identifier Scheme is `verifier_attestation`, the Client Identifier MUST equal `sub` claim value in the Verifier attestation JWT. The request MUST be signed with the private key corresponding to the public key in the `cnf` claim in the Verifier attestation JWT. The Verifier attestation VC MUST be added to a newly defined `verifier_attestation` JOSE Header of a request object. The Wallet MUST validate the signature on the Verifier attestation JWT by a trusted third party. Verifier metadata MUST be obtained from the Verifier attestation JWT.\"",
+          "createdAt": "2023-05-16T03:05:58Z",
+          "updatedAt": "2023-05-16T03:05:58Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "Just check back with ppl from ETSi. They are in favor of (in addition to x.509 for qWACs and qSeals) having a VC-based mechanism for Verifier authentication.  ",
+          "createdAt": "2023-05-16T15:27:05Z",
+          "updatedAt": "2023-05-16T15:27:05Z"
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "id": "I_kwDOJcWsFs5mFYZA",
+      "title": "add back client_metadata?",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/17",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I left it out in the first pass.\r\nany protocol-related parameter that can be passed in the client_metadata like `subject_syntax_types_supported` is hard-coded in the profile. \r\nif there is a need to verifier related metadata like `logo_url`, `client_name`, etc. we should add it back",
+      "createdAt": "2023-05-16T20:20:35Z",
+      "updatedAt": "2023-05-16T20:20:35Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 18,
+      "id": "I_kwDOJcWsFs5mFZaL",
+      "title": "attestation of the key signing SIOP ID Token",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/18",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "do we assume that the key used for the signature of the SIOPv2 id token must be attestable with a wallet instance attestation? from @peppelinux",
+      "createdAt": "2023-05-16T20:24:05Z",
+      "updatedAt": "2023-05-16T20:27:44Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "I don't think so. it's the wallet (provider) that is being attested, not the key. Like for the issuance of credentials, where the wallet is attested and not the key the credential is bound to.",
+          "createdAt": "2023-05-16T20:27:44Z",
+          "updatedAt": "2023-05-16T20:27:44Z"
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "id": "I_kwDOJcWsFs5mFlpb",
+      "title": "How to constrain PE",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/19",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "how to constraint `fields`: \r\n- path (can the JSONPath be constrained?)\r\n- filter (this is a JSON Schema! Must be constrained!)\r\n",
+      "createdAt": "2023-05-16T21:04:09Z",
+      "updatedAt": "2023-05-16T21:04:09Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 27,
+      "id": "I_kwDOJcWsFs5mFp_J",
+      "title": "requesting presentation of 1 out of n credentials",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/27",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "One way is to use \"submission_requirements\". Another, arguably easier, way is to just state that whatever is requested, the wallet will always respond with a single credential, so no need the submission_requirement at all.",
+      "createdAt": "2023-05-16T21:26:34Z",
+      "updatedAt": "2023-05-16T21:26:46Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 28,
+      "id": "I_kwDOJcWsFs5mFqwt",
+      "title": "\u201cVerifiable Credentials\u201d or \u201cDigital Credentials\u201d..?",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/28",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Can we please rename \u201cVerifiable Credentials\u201d to \u201cDigital Credentials\u201d? that\u2019s the term already used in other OIDF whitepapers. to OID4DCI and OID4DCP and OID4DC",
+      "createdAt": "2023-05-16T21:29:13Z",
+      "updatedAt": "2023-05-16T21:29:13Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 29,
+      "id": "I_kwDOJcWsFs5mK4ks",
+      "title": "make iat in SD-JWT selectively disclosable during presentation",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/29",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "from @peppelinux\r\n> well, the \"human behaviour\" may create the practice to get you to update the PID on your birthday, producing a certain information leakage in the meaning of iat. I propose that iat should be in MAY and that there is no problem with making it opaque and SD",
+      "createdAt": "2023-05-17T15:11:17Z",
+      "updatedAt": "2023-05-17T15:11:17Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
+  "pulls": []
+}
