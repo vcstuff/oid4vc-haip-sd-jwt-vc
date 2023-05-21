@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-05-18T00:25:39.009849+00:00",
+  "timestamp": "2023-05-21T00:28:26.362392+00:00",
   "repo": "vcstuff/high-assurance-profile",
   "labels": [
     {
@@ -185,7 +185,7 @@
       "labels": [],
       "body": "Which HTTPS URL does the issuer use when x.509 is used? SAN? if we mandate issuer to do both x.509 and SAN, does that mean issuers must make sure /JWT-issuer is hosted under SAN? Isn\u2019t that pretty limiting? (I am not necessarily opposed to \u201ciss is always a URL, just trying to understand the implications)",
       "createdAt": "2023-05-13T14:53:32Z",
-      "updatedAt": "2023-05-16T10:40:52Z",
+      "updatedAt": "2023-05-20T23:32:32Z",
       "closedAt": null,
       "comments": [
         {
@@ -201,6 +201,13 @@
           "body": "I agree using iss field for x509 as well. It has the advantage of having a common identifier for both mechanisms. EV and QWAC work the same way",
           "createdAt": "2023-05-16T10:40:51Z",
           "updatedAt": "2023-05-16T10:40:51Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "If the goal of the x5c is the key attestation, this works fine.\r\n\r\nIf instead policies and additional information like metadata are required, x5c simply doesn't work unless it would be \"inflated\" with custom elements for carrying metadata and policies and grants. That from what can be said about x509, inflating it so much would be like making an 80-year-old man do bodybuilding!\r\n\r\nI suggest the inclusion of OIDC Federation Trust chain in this profile, that's both web attested key and chain of verifiable statements issued by more than a single party.\r\n\r\nthe key question is: what defines the level high? key attestations (as oidc core did for years) or a high level would bring also grants/policies, metadata and all the interop schema as high verifiable and assured?",
+          "createdAt": "2023-05-20T20:29:33Z",
+          "updatedAt": "2023-05-20T23:32:32Z"
         }
       ]
     },
@@ -256,7 +263,7 @@
       "labels": [],
       "body": "from @peppelinux",
       "createdAt": "2023-05-13T15:31:58Z",
-      "updatedAt": "2023-05-13T15:32:11Z",
+      "updatedAt": "2023-05-20T23:26:17Z",
       "closedAt": null,
       "comments": [
         {
@@ -265,6 +272,13 @@
           "body": "i personally don't think it is necessary..",
           "createdAt": "2023-05-13T15:32:10Z",
           "updatedAt": "2023-05-13T15:32:10Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "The meaning of ephemeral is given by the value its owner give to it, and then how she uses the credential\r\n\r\nat the same time using this term \"ephemeral\" we assume that the credential is a one-time-credential, while another case is vc used for specific audiences and requested/issued/obtained just for that, since it will be used more than a single time (audience constrained)\r\n\r\nbut at the same time, these are not properties of the credential itself, but the usage/scope given to these by its owner\r\n\r\ninteresting anyway :-)\r\n\r\n",
+          "createdAt": "2023-05-20T23:25:48Z",
+          "updatedAt": "2023-05-20T23:26:17Z"
         }
       ]
     },
@@ -353,7 +367,7 @@
       "labels": [],
       "body": "currently out of scope, but agreement to add before final",
       "createdAt": "2023-05-15T17:41:50Z",
-      "updatedAt": "2023-05-16T09:29:48Z",
+      "updatedAt": "2023-05-20T20:19:00Z",
       "closedAt": null,
       "comments": [
         {
@@ -362,6 +376,13 @@
           "body": "I think the profile with key resolution and identifier authentication adds a lot in terms of interoperability. On the other hand, there are so many different technical means to manage trust, we will have a hard time to pin down THE one or two to endorse by the profile. I don't think we should delay publication due to this topic. ",
           "createdAt": "2023-05-16T09:29:48Z",
           "updatedAt": "2023-05-16T09:29:48Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "My only concern is that also this time new specifications are born that do not address the crucial issue of trust, in a paradigm where the citizen is at the center and consequently alone, considering that there's an important demand of the trust model, at a design level, and consequentially the demand the technical and implementation profiles for certifying trust.\r\n\r\nConsidering that profiles for attesting trust exist, it would be really important to at least reference them in this new spec (and answer simple questions, like the ones here: [draft-looker-oauth-attested-key-based-client- authentication](https://github.com/vcstuff/draft-looker-oauth-attested-key-based-client-authentication/issues/3#issuecomment-1555952616)) by giving some non normative example about how to deal with these, in this new specs.\r\n\r\nin addition to the concern, I want to remove the fear that not wanting/being able to deal with the issue of trust, consequently it will not be dealt with at all, leaving a huge design hole that would allow anyone to do it \"in their own way\" and with clear security risks.",
+          "createdAt": "2023-05-20T20:18:12Z",
+          "updatedAt": "2023-05-20T20:19:00Z"
         }
       ]
     },
@@ -377,9 +398,17 @@
       "labels": [],
       "body": "current value is `haip` standing for \"high assurance interop profile\".\r\n\r\nif you come up with a better one, I will buy you a drink",
       "createdAt": "2023-05-15T17:44:43Z",
-      "updatedAt": "2023-05-15T17:44:43Z",
+      "updatedAt": "2023-05-20T20:23:46Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "semantically, the question is <<High assurance interop profile, of what?>>\r\n\r\nthe schema should have at least a subject\r\n\r\nvc-hap://?\r\n\r\nbut, anyway, if there's an high level, where are the middle and the low?\r\nHigh is high in comparison to something that is less high :-)\r\n\r\naccording to what already made with ACR Values, we should define three levels and then say, this is \"high\" ",
+          "createdAt": "2023-05-20T20:23:45Z",
+          "updatedAt": "2023-05-20T20:23:45Z"
+        }
+      ]
     },
     {
       "number": 15,
@@ -393,9 +422,17 @@
       "labels": [],
       "body": "verifier sends a request_uri, when wallet hits that request_uri, it can communicate information such as version control. maybe using the headers. not urgent",
       "createdAt": "2023-05-15T22:11:01Z",
-      "updatedAt": "2023-05-15T22:11:01Z",
+      "updatedAt": "2023-05-20T23:39:17Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "wallet capabilities should be attested in the wallet instance attestation\r\nwallet should submit its wallet instance attestation to the request_uri URL using the HTTP POST method",
+          "createdAt": "2023-05-20T23:39:17Z",
+          "updatedAt": "2023-05-20T23:39:17Z"
+        }
+      ]
     },
     {
       "number": 16,
@@ -409,7 +446,7 @@
       "labels": [],
       "body": "the core idea is: \"Verifier obtains a VC from a trusted third party, a VC includes a key material of a Verifier, authorization request is signed using that key\". need to define a schema for that VC.",
       "createdAt": "2023-05-15T23:33:45Z",
-      "updatedAt": "2023-05-16T15:27:05Z",
+      "updatedAt": "2023-05-20T23:30:52Z",
       "closedAt": null,
       "comments": [
         {
@@ -425,6 +462,13 @@
           "body": "Just check back with ppl from ETSi. They are in favor of (in addition to x.509 for qWACs and qSeals) having a VC-based mechanism for Verifier authentication.  ",
           "createdAt": "2023-05-16T15:27:05Z",
           "updatedAt": "2023-05-16T15:27:05Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "we are not forced in using verifier_attestation JOSE claim, since we may use a trust_chain jose claim\r\n\r\nthe attestation is flat, while the trust chain attests all the trust relationships between the parties that attests the accreditation status of an entity, without a central registry",
+          "createdAt": "2023-05-20T23:30:52Z",
+          "updatedAt": "2023-05-20T23:30:52Z"
         }
       ]
     },
@@ -456,7 +500,7 @@
       "labels": [],
       "body": "do we assume that the key used for the signature of the SIOPv2 id token must be attestable with a wallet instance attestation? from @peppelinux",
       "createdAt": "2023-05-16T20:24:05Z",
-      "updatedAt": "2023-05-16T20:27:44Z",
+      "updatedAt": "2023-05-20T20:36:26Z",
       "closedAt": null,
       "comments": [
         {
@@ -465,6 +509,13 @@
           "body": "I don't think so. it's the wallet (provider) that is being attested, not the key. Like for the issuance of credentials, where the wallet is attested and not the key the credential is bound to.",
           "createdAt": "2023-05-16T20:27:44Z",
           "updatedAt": "2023-05-16T20:27:44Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "My bad since I didn't understand.\r\n\r\nI assume that the SIOP, then the material issuer of the id token, is the Wallet Instance and not the Wallet Provider.\r\nI assume that a SIOP may issue an id token including the wallet instance attestation containing the public key used to verify the signature of the id token, since the wallet instance attestation has the holder binding\r\n\r\nthe verifier given the id token and the wallet instance attestation, is able to trust that the wallet is secure and compliat to eidas, considering that the Wallet Instance Attestation SHOULD contain the trust chain (or x5c...) to give the proof that the Wallet Provider, that's its issuer, is reliable and attestable as trustworthy ",
+          "createdAt": "2023-05-20T20:36:26Z",
+          "updatedAt": "2023-05-20T20:36:26Z"
         }
       ]
     },
@@ -496,9 +547,17 @@
       "labels": [],
       "body": "One way is to use \"submission_requirements\". Another, arguably easier, way is to just state that whatever is requested, the wallet will always respond with a single credential, so no need the submission_requirement at all.",
       "createdAt": "2023-05-16T21:26:34Z",
-      "updatedAt": "2023-05-16T21:26:46Z",
+      "updatedAt": "2023-05-18T14:52:58Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "I have come to the conclusion that we should support multiple credentials in a response (for now at least). There are examples being discussed in the LSPs (PID + mDL) and the plugfest 3 (badge + work permit) with multiple credentials. I'm not sure the technical implementation in the end will require to return the credentials in the same response. However, we should at least allow for now and revisit later. ",
+          "createdAt": "2023-05-18T14:52:58Z",
+          "updatedAt": "2023-05-18T14:52:58Z"
+        }
+      ]
     },
     {
       "number": 28,
@@ -529,6 +588,62 @@
       "body": "from @peppelinux\r\n> well, the \"human behaviour\" may create the practice to get you to update the PID on your birthday, producing a certain information leakage in the meaning of iat. I propose that iat should be in MAY and that there is no problem with making it opaque and SD",
       "createdAt": "2023-05-17T15:11:17Z",
       "updatedAt": "2023-05-17T15:11:17Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 30,
+      "id": "I_kwDOJcWsFs5mRDYS",
+      "title": "Requesting credentials with scope only",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/30",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "> scope parameter MUST be communicated from the Issuer to the Wallet either in the Credential Offer, or Credential Issuer metadata.\r\n\r\nWe need to define the respective issuer metadata.",
+      "createdAt": "2023-05-18T14:31:21Z",
+      "updatedAt": "2023-05-21T00:00:29Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "using OIDC Federation trust_chain JWS header, the metadata of the issuer is derived from the trust chain\r\nand cannot be repudiated by the issuer, even if its keys will change in the future\r\n\r\noidc dynamic client registration has defined the metadata parameter \"scope\", is there the possibility to use the same also in the credential issuer metadata?",
+          "createdAt": "2023-05-21T00:00:28Z",
+          "updatedAt": "2023-05-21T00:00:28Z"
+        }
+      ]
+    },
+    {
+      "number": 31,
+      "id": "I_kwDOJcWsFs5mRQUg",
+      "title": "JSON Serialization mandatory?",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/31",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I'm not sure whether the profile should make the JSON Serialization mandatory. Are there libraries avalaible? Are there enough use cases justifying it? So far, I see JAdES as a technical mechanisms for long term validation only. But long term validation is a pretty advanced topic and might only be needed for some credentials. ",
+      "createdAt": "2023-05-18T15:04:55Z",
+      "updatedAt": "2023-05-18T15:04:55Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 32,
+      "id": "I_kwDOJcWsFs5ma4E_",
+      "title": "Key attestation methods",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/32",
+      "state": "OPEN",
+      "author": "peppelinux",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I read here\r\n\r\nhttps://github.com/vcstuff/high-assurance-profile/blob/main/draft-high-assurance-profile-oid4vc-sd-jwt-vc.md#issuer-identification-and-key-resolution-to-validate-an-issued-credential-issuer-key-resolution\r\n\r\nthat only x509 and .well-known/jwt-issuer MUST be supported\r\n\r\nAt the same time I have the \"perception\" that Federation has a higher level for the attestation of requirements and keys, since it brings metadata, policy and custom attestations (trust marks), and that todate we don't have clear requirements to compare x509 or .well-known/jwt-issuer more or less high.\r\n\r\nSince this new specification is dedicated to the High profile, I think it is appropriate to do a PR to obtain the JWS `trust_chain` header parameter within this new profile",
+      "createdAt": "2023-05-20T23:50:03Z",
+      "updatedAt": "2023-05-20T23:50:03Z",
       "closedAt": null,
       "comments": []
     }
