@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-05-21T00:28:26.362392+00:00",
+  "timestamp": "2023-05-23T00:26:51.641546+00:00",
   "repo": "vcstuff/high-assurance-profile",
   "labels": [
     {
@@ -185,7 +185,7 @@
       "labels": [],
       "body": "Which HTTPS URL does the issuer use when x.509 is used? SAN? if we mandate issuer to do both x.509 and SAN, does that mean issuers must make sure /JWT-issuer is hosted under SAN? Isn\u2019t that pretty limiting? (I am not necessarily opposed to \u201ciss is always a URL, just trying to understand the implications)",
       "createdAt": "2023-05-13T14:53:32Z",
-      "updatedAt": "2023-05-20T23:32:32Z",
+      "updatedAt": "2023-05-22T20:42:20Z",
       "closedAt": null,
       "comments": [
         {
@@ -205,9 +205,23 @@
         {
           "author": "peppelinux",
           "authorAssociation": "NONE",
-          "body": "If the goal of the x5c is the key attestation, this works fine.\r\n\r\nIf instead policies and additional information like metadata are required, x5c simply doesn't work unless it would be \"inflated\" with custom elements for carrying metadata and policies and grants. That from what can be said about x509, inflating it so much would be like making an 80-year-old man do bodybuilding!\r\n\r\nI suggest the inclusion of OIDC Federation Trust chain in this profile, that's both web attested key and chain of verifiable statements issued by more than a single party.\r\n\r\nthe key question is: what defines the level high? key attestations (as oidc core did for years) or a high level would bring also grants/policies, metadata and all the interop schema as high verifiable and assured?",
+          "body": "If the goal of the x5c is the key attestation, this works fine.\r\n\r\nIf instead policies and additional information like metadata are required, x5c simply doesn't work unless it would be \"inflated\" with custom elements for carrying metadata and policies and grants. That from what can be said about x509, inflating it so much would be like making an 80-year-old man do bodybuilding!\r\n\r\nI suggest the inclusion of OIDC Federation Trust chain in this profile, that's both web attested key and chain of verifiable statements issued by more than a single party.\r\n\r\nthe key question is: what defines the level high? key attestations (as oidc core did for years) or a high level would bring also grants/policies, metadata and all the interop schema as high verifiable and assured?\r\n\r\nSince every issued VC or any kind of attestation should not be repudiable in the future, that's something pertaining the assurance level I think",
           "createdAt": "2023-05-20T20:29:33Z",
-          "updatedAt": "2023-05-20T23:32:32Z"
+          "updatedAt": "2023-05-21T21:49:57Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "@peppelinux This issue is about the question what the identifier of an issuer is in a VC. Since we are leaning towards using a HTTPS URL, that would work for federation, too. ",
+          "createdAt": "2023-05-22T07:38:01Z",
+          "updatedAt": "2023-05-22T07:38:01Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "I agreed, since federation only uses HTTPs but from Draft 29 there's the trust_chain JWS header claim that allows metadata, keys and policies attestation even in offline flows\r\n\r\nan https alone is not attestable in offline flows and x509 doesn't have metadata, policies and trust marks/additional-VCs in it related to the issuer\r\n\r\nfederation trust_chain has",
+          "createdAt": "2023-05-22T20:42:19Z",
+          "updatedAt": "2023-05-22T20:42:19Z"
         }
       ]
     },
@@ -223,9 +237,17 @@
       "labels": [],
       "body": "there are currently two options for issuer key resolution: web PKI based one and X.509 based one. current text states, \"iissuer supports one of the options, wallet and verifier support both\", but @tlodderstedt is right that this will make the life of verifiers (and wallets) really hard. \r\nprobably need to discuss what it means for the issuer to support both x.509 and web pki based...",
       "createdAt": "2023-05-13T15:18:02Z",
-      "updatedAt": "2023-05-13T15:18:02Z",
+      "updatedAt": "2023-05-22T20:32:01Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "since the revocation for x509 should be always attested with web retrieval mechanisms, and that x509 works for key attestation only and needs to be extended with custom attributes to satisfy the requirements for policies and metadata/capabilities retrieval\r\n\r\nI'm in favour of using federation trust_chain as the best way to go to satisfy all the requirements for a high assurance profile that attests also grants and capabilities and not just the identity of an entity\r\n\r\nthen the question would be, where are the requirements?\r\nIt is still a work in progress but in a way or another it is becoming part of our shared knowledge:\r\n\r\nhttps://docs.google.com/document/d/1Dk_8UmytCI4VhCx5VMnXmEzdXRvgJozGeq1GNHZOQik/edit#heading=h.jb7a7nddoxft",
+          "createdAt": "2023-05-22T20:32:01Z",
+          "updatedAt": "2023-05-22T20:32:01Z"
+        }
+      ]
     },
     {
       "number": 8,
@@ -296,7 +318,7 @@
       ],
       "body": "The text current wallet attestation draft says:\r\n> The JWT MUST contain a \"sub\" (subject) claim with a value corresponding to the \"client_id\" of the OAuth client.\r\n\r\nthe thing is.. when there has been no pre-existing relationship between the issuer and the wallet, which `client_id` value does the wallet uses..?",
       "createdAt": "2023-05-13T15:55:49Z",
-      "updatedAt": "2023-05-16T09:17:25Z",
+      "updatedAt": "2023-05-22T20:26:56Z",
       "closedAt": null,
       "comments": [
         {
@@ -312,6 +334,13 @@
           "body": "@paulbastian what do you do in your current implementation?",
           "createdAt": "2023-05-16T09:17:25Z",
           "updatedAt": "2023-05-16T09:17:25Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "I suggest the jwk thumbprint value for the sub value (and consequently for the client_id in the issuance flow)\r\n\r\nthe sub will be always derived from the cnf.jwk, producing a privacy-preserving value since it would be like a kid\r\n\r\nthis proposal assumes that the wallet instance could only be tracked with its public key, considering that it should have/use more than a single key, the risk is mitigated",
+          "createdAt": "2023-05-22T20:26:56Z",
+          "updatedAt": "2023-05-22T20:26:56Z"
         }
       ]
     },
@@ -351,9 +380,17 @@
       "labels": [],
       "body": "@peppelinux: a client_id or a sub value for this use case can be derived with a simple thumbprint value of the cnf.jwk, just to bind the identity of the wallet instance to one of its public key\r\n\r\nI would suggest to leave this choice whether to bind sub and pop key to the wallet frontend",
       "createdAt": "2023-05-13T16:54:14Z",
-      "updatedAt": "2023-05-13T16:54:14Z",
+      "updatedAt": "2023-05-22T20:22:19Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "this issue is related to the doubts on removing client_id from the token endpoint (issuance phase)\r\n\r\nI'm in favor to keep client_id since there's a legacy schema for the token endpoint that we are technically able to respect, so I'd not break an existing token endpoint, keeping the client_id as it is using a resonable strategy to create it for the wallet instance without breaking privacy (multiple client_id each one derived from a public key of the wallet instance)",
+          "createdAt": "2023-05-22T20:22:19Z",
+          "updatedAt": "2023-05-22T20:22:19Z"
+        }
+      ]
     },
     {
       "number": 13,
@@ -367,7 +404,7 @@
       "labels": [],
       "body": "currently out of scope, but agreement to add before final",
       "createdAt": "2023-05-15T17:41:50Z",
-      "updatedAt": "2023-05-20T20:19:00Z",
+      "updatedAt": "2023-05-22T07:45:26Z",
       "closedAt": null,
       "comments": [
         {
@@ -383,6 +420,13 @@
           "body": "My only concern is that also this time new specifications are born that do not address the crucial issue of trust, in a paradigm where the citizen is at the center and consequently alone, considering that there's an important demand of the trust model, at a design level, and consequentially the demand the technical and implementation profiles for certifying trust.\r\n\r\nConsidering that profiles for attesting trust exist, it would be really important to at least reference them in this new spec (and answer simple questions, like the ones here: [draft-looker-oauth-attested-key-based-client- authentication](https://github.com/vcstuff/draft-looker-oauth-attested-key-based-client-authentication/issues/3#issuecomment-1555952616)) by giving some non normative example about how to deal with these, in this new specs.\r\n\r\nin addition to the concern, I want to remove the fear that not wanting/being able to deal with the issue of trust, consequently it will not be dealt with at all, leaving a huge design hole that would allow anyone to do it \"in their own way\" and with clear security risks.",
           "createdAt": "2023-05-20T20:18:12Z",
           "updatedAt": "2023-05-20T20:19:00Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "One step after the other. Our first concern is to provide interoperability across implementations of OID4VC with SD-JWT on a global basis. And as always, interoperability means to reduce optionality. On the other hand, less optionality also reduces the number of potential implementations, since not all requirements can be covered. So we need to make sure we provide interop while having an broad enough scope for adoption. So we are not only looking for eIDAS ARF, we are also, for example, looking for small business intending to get something out onto the streets this year. In their deployments, trust might be as simple as the wallets and verifiers having a list of issuers (as a list of URLs). eIDAS ARF will certainly use other mechanisms, other deployments around the globe will perhaps use other mechanisms, too. It's their responsibility, to add their mechanism to our (global) interop profile. Modularity is the key here. \r\nFor eIDAS ARF, I assume the ARF/rule books will add whatever is necessary. Perhaps ETSi will do that on the ling run.  ",
+          "createdAt": "2023-05-22T07:45:26Z",
+          "updatedAt": "2023-05-22T07:45:26Z"
         }
       ]
     },
@@ -422,7 +466,7 @@
       "labels": [],
       "body": "verifier sends a request_uri, when wallet hits that request_uri, it can communicate information such as version control. maybe using the headers. not urgent",
       "createdAt": "2023-05-15T22:11:01Z",
-      "updatedAt": "2023-05-20T23:39:17Z",
+      "updatedAt": "2023-05-22T11:39:54Z",
       "closedAt": null,
       "comments": [
         {
@@ -431,6 +475,20 @@
           "body": "wallet capabilities should be attested in the wallet instance attestation\r\nwallet should submit its wallet instance attestation to the request_uri URL using the HTTP POST method",
           "createdAt": "2023-05-20T23:39:17Z",
           "updatedAt": "2023-05-20T23:39:17Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "I guess this issue is about the verifier to wallet communication (presentation), specifically the callback from the wallet to the verifier at the request_uri. MSFT currently passes additional information in HTTP request headers to allow the verifier to produce a request object tailored for the capabilities of the wallet. We are considering to add this to the spec. \r\nI don't see why there is any attestation required.  ",
+          "createdAt": "2023-05-22T07:30:20Z",
+          "updatedAt": "2023-05-22T07:30:20Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "The Wallet Solution has many capabilities, these are attested by Wallet Provider to the Wallet Instance with the Wallet Instance Attestation, this latter should contain the policy and the interop metadata attesting the wallet instance capabilities and should be presented by Wallet Instance to prove its capabilities\r\n\r\nthis is the picture I have in mind",
+          "createdAt": "2023-05-22T11:39:53Z",
+          "updatedAt": "2023-05-22T11:39:53Z"
         }
       ]
     },
@@ -484,9 +542,17 @@
       "labels": [],
       "body": "I left it out in the first pass.\r\nany protocol-related parameter that can be passed in the client_metadata like `subject_syntax_types_supported` is hard-coded in the profile. \r\nif there is a need to verifier related metadata like `logo_url`, `client_name`, etc. we should add it back",
       "createdAt": "2023-05-16T20:20:35Z",
-      "updatedAt": "2023-05-16T20:20:35Z",
+      "updatedAt": "2023-05-22T20:15:39Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "federation trust_chain bring the verifier metadata in the trust attestation, and the federation_entity metadata defines a standard scheme for every kind of participant, this is here\r\n\r\nhttps://openid.net/specs/openid-connect-federation-1_0.html#section-4.7",
+          "createdAt": "2023-05-22T20:15:39Z",
+          "updatedAt": "2023-05-22T20:15:39Z"
+        }
+      ]
     },
     {
       "number": 18,
@@ -500,7 +566,7 @@
       "labels": [],
       "body": "do we assume that the key used for the signature of the SIOPv2 id token must be attestable with a wallet instance attestation? from @peppelinux",
       "createdAt": "2023-05-16T20:24:05Z",
-      "updatedAt": "2023-05-20T20:36:26Z",
+      "updatedAt": "2023-05-22T20:13:50Z",
       "closedAt": null,
       "comments": [
         {
@@ -516,6 +582,20 @@
           "body": "My bad since I didn't understand.\r\n\r\nI assume that the SIOP, then the material issuer of the id token, is the Wallet Instance and not the Wallet Provider.\r\nI assume that a SIOP may issue an id token including the wallet instance attestation containing the public key used to verify the signature of the id token, since the wallet instance attestation has the holder binding\r\n\r\nthe verifier given the id token and the wallet instance attestation, is able to trust that the wallet is secure and compliat to eidas, considering that the Wallet Instance Attestation SHOULD contain the trust chain (or x5c...) to give the proof that the Wallet Provider, that's its issuer, is reliable and attestable as trustworthy ",
           "createdAt": "2023-05-20T20:36:26Z",
           "updatedAt": "2023-05-20T20:36:26Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "> I assume that a SIOP may issue an id token including the wallet instance attestation containing the public key used to verify the signature of the id token, since the wallet instance attestation has the holder binding\r\n\r\nI don't understand the meaning of \"since the wallet instance attestation has the holder binding\". \r\n\r\nOur concept for attestation is pretty simple. If the verifier wants an attestation of the wallet (along with the SIOP response), it requests a wallet attestation VC in the same transaction. So technical speaking, the verifier sends a combined SIOP + OID4VP request. The wallet attestation VC is the kind of VC used to authenticate towards issuers during credential issuance.  ",
+          "createdAt": "2023-05-22T07:36:29Z",
+          "updatedAt": "2023-05-22T07:36:29Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "> I don't understand the meaning of \"since the wallet instance attestation has the holder binding\".\r\n\r\n`cnf` claim in the payload of the Wallet Instance Attestation binds the holder public key in the JWS\r\n\r\n> it requests a wallet attestation VC in the same transaction.\r\n\r\nNot sure since the pseudonym should be also presented in offline flows. The Wallet Instance Attestation should expire and at the same time be usable in a configured time window\r\n\r\nif the wallet instance should have to ask a wallet instance attestation for every id token it issues the offline flows would not possible with pseudonymization\r\n\r\nI agree with your solution and at the same time I find the limits above, so I'd go for a wallet instance attestation usable in offline flows for pseudonymizations",
+          "createdAt": "2023-05-22T20:13:50Z",
+          "updatedAt": "2023-05-22T20:13:50Z"
         }
       ]
     },
@@ -603,15 +683,15 @@
       "labels": [],
       "body": "> scope parameter MUST be communicated from the Issuer to the Wallet either in the Credential Offer, or Credential Issuer metadata.\r\n\r\nWe need to define the respective issuer metadata.",
       "createdAt": "2023-05-18T14:31:21Z",
-      "updatedAt": "2023-05-21T00:00:29Z",
+      "updatedAt": "2023-05-22T20:07:51Z",
       "closedAt": null,
       "comments": [
         {
           "author": "peppelinux",
           "authorAssociation": "NONE",
-          "body": "using OIDC Federation trust_chain JWS header, the metadata of the issuer is derived from the trust chain\r\nand cannot be repudiated by the issuer, even if its keys will change in the future\r\n\r\noidc dynamic client registration has defined the metadata parameter \"scope\", is there the possibility to use the same also in the credential issuer metadata?",
+          "body": "using OIDC Federation trust_chain JWS header, the metadata of the issuer is derived from the trust chain\r\nand cannot be repudiated by the issuer, even if its keys will change in the future\r\n\r\noidc dynamic client registration has defined the metadata parameter \"scopes\", is there the possibility to use the same also in the credential issuer metadata?",
           "createdAt": "2023-05-21T00:00:28Z",
-          "updatedAt": "2023-05-21T00:00:28Z"
+          "updatedAt": "2023-05-22T20:07:51Z"
         }
       ]
     },
