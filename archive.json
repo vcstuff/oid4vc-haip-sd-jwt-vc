@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-05-23T00:26:51.641546+00:00",
+  "timestamp": "2023-05-25T00:24:16.537705+00:00",
   "repo": "vcstuff/high-assurance-profile",
   "labels": [
     {
@@ -113,7 +113,7 @@
     {
       "number": 3,
       "id": "I_kwDOJcWsFs5l1z4o",
-      "title": "[ed]",
+      "title": "[ed] URLs to the audience organizations",
       "url": "https://github.com/vcstuff/high-assurance-profile/issues/3",
       "state": "OPEN",
       "author": "Sakurann",
@@ -122,7 +122,7 @@
       "labels": [],
       "body": "URLs to \"eIDAS 2.0, California Department of Motor Vehicles, Open Wallet Foundation (OWF), IDunion, GAIN\"",
       "createdAt": "2023-05-13T13:32:14Z",
-      "updatedAt": "2023-05-13T13:32:14Z",
+      "updatedAt": "2023-05-24T22:33:01Z",
       "closedAt": null,
       "comments": []
     },
@@ -185,15 +185,15 @@
       "labels": [],
       "body": "Which HTTPS URL does the issuer use when x.509 is used? SAN? if we mandate issuer to do both x.509 and SAN, does that mean issuers must make sure /JWT-issuer is hosted under SAN? Isn\u2019t that pretty limiting? (I am not necessarily opposed to \u201ciss is always a URL, just trying to understand the implications)",
       "createdAt": "2023-05-13T14:53:32Z",
-      "updatedAt": "2023-05-22T20:42:20Z",
+      "updatedAt": "2023-05-24T23:16:37Z",
       "closedAt": null,
       "comments": [
         {
           "author": "tlodderstedt",
           "authorAssociation": "NONE",
-          "body": "According to the feedback we got so far on the concept, I think SNA is the way to go. \r\n\r\nI see value in the proposal @tplooker made to always use the same kind of `iss` value. It is especially beneficial if the credential has both the x.509 cert chain and support for web based key resolution, since the verifier can choose what data to use for validation. \r\n\r\nIf the credential only has x.509, it doesn't matter in the end what identifier we use as long as the leaf cert binds that identifier to the public key of the issuer. So using the HTTPS URL doesn't hurt at least and might be inline with the way domain validated certs (and cWACs? @paulbastian) work. \r\n\r\nEven HTTPS URL with paths should work. I checked https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.6 and did not find an indication that this would not be possible. I mention it because as far as I remember someone stated that a SNA would only contain a URL with FQN but no path. \r\n\r\n> Isn\u2019t that pretty limiting?\r\nIn my opinion, the issuer can freely choose the URL so it should not become a limitation. However, I also think we need implementors' feedback. ",
+          "body": "According to the feedback we got so far on the concept, I think SNA is the way to go. \r\n\r\nI see value in the proposal @tplooker made to always use the same kind of `iss` value. It is especially beneficial if the credential has both the x.509 cert chain and support for web based key resolution, since the verifier can choose what data to use for validation. \r\n\r\nIf the credential only has x.509, it doesn't matter in the end what identifier we use as long as the leaf cert binds that identifier to the public key of the issuer. So using the HTTPS URL doesn't hurt at least and might be inline with the way domain validated certs (and cWACs? @paulbastian) work. \r\n\r\nEven HTTPS URL with paths should work. I checked https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.6 and did not find an indication that this would not be possible. I mention it because as far as I remember someone stated that a SNA would only contain a URL with FQN but no path. \r\n\r\n> Isn\u2019t that pretty limiting?\r\n\r\nIn my opinion, the issuer can freely choose the URL so it should not become a limitation. However, I also think we need implementors' feedback. ",
           "createdAt": "2023-05-16T09:49:48Z",
-          "updatedAt": "2023-05-16T09:49:48Z"
+          "updatedAt": "2023-05-24T22:36:48Z"
         },
         {
           "author": "paulbastian",
@@ -222,6 +222,34 @@
           "body": "I agreed, since federation only uses HTTPs but from Draft 29 there's the trust_chain JWS header claim that allows metadata, keys and policies attestation even in offline flows\r\n\r\nan https alone is not attestable in offline flows and x509 doesn't have metadata, policies and trust marks/additional-VCs in it related to the issuer\r\n\r\nfederation trust_chain has",
           "createdAt": "2023-05-22T20:42:19Z",
           "updatedAt": "2023-05-22T20:42:19Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "@peppelinux \r\nI have to admit I don't fully understand your arguments. This issue is about the value of the `iss` value in the credential. A HTTPS URL works fine with OpenID Federation as well, right? So I don't see a problem. ",
+          "createdAt": "2023-05-23T07:06:11Z",
+          "updatedAt": "2023-05-23T07:06:11Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "yes, I went quite out of the border\r\n\r\nThe question is there any interest to have different kind of issuer identifiers?\r\n\r\nI'm in favor of HTTP URLs, even if there may be some cases where a did resolution methods resolve to HTTPs URL as well, as discussed in the issue below:\r\nhttps://github.com/vcstuff/draft-terbu-sd-jwt-vc/issues/41#issuecomment-1546743042\r\n\r\nAnyway, if there are milestone in this project this question doesn' seem a priority since that this profile can satisfy its scope using HTTPs URL\r\n\r\nso accept my excuse for the noise, it was just for sharing\r\n\r\n",
+          "createdAt": "2023-05-23T17:29:21Z",
+          "updatedAt": "2023-05-23T17:29:21Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@paulbastian \r\n> EV and QWAC work the same way\r\n\r\nCould you please elaborate a bit? what is EV?",
+          "createdAt": "2023-05-24T22:37:22Z",
+          "updatedAt": "2023-05-24T22:37:22Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I think what I would like to see is a clear validation logic, something like:\r\n- when only x509 is used (kid JOSE header is not present), iss is a SAN. when verifying, must be an absolute match btw the value in iss and x509 leaf cert.\r\n- when only web PKI based approach is used (x5c JOSE header is not present), iss is a URL where the key is hosted, it can include path and subdomain.\r\n- when both x509 and web PKI based are used (both x5c and kid header is present), iss is a URL where the key is hosted, can include path and subdomain. Verifier must strip down path and subdomain and use only the domain when comparing with the SAN in x509 cert.\r\n\r\nnot sure it is clean to use header parameters as a switch, but that's how the verifier will determine which mechanism is used, right?\r\n\r\ndon't know if it is a limitation, but essentially, Web PKI based approach must host the keys at the domain that is also in the x509 cert.",
+          "createdAt": "2023-05-24T23:16:37Z",
+          "updatedAt": "2023-05-24T23:16:37Z"
         }
       ]
     },
@@ -318,7 +346,7 @@
       ],
       "body": "The text current wallet attestation draft says:\r\n> The JWT MUST contain a \"sub\" (subject) claim with a value corresponding to the \"client_id\" of the OAuth client.\r\n\r\nthe thing is.. when there has been no pre-existing relationship between the issuer and the wallet, which `client_id` value does the wallet uses..?",
       "createdAt": "2023-05-13T15:55:49Z",
-      "updatedAt": "2023-05-22T20:26:56Z",
+      "updatedAt": "2023-05-23T17:33:03Z",
       "closedAt": null,
       "comments": [
         {
@@ -341,6 +369,20 @@
           "body": "I suggest the jwk thumbprint value for the sub value (and consequently for the client_id in the issuance flow)\r\n\r\nthe sub will be always derived from the cnf.jwk, producing a privacy-preserving value since it would be like a kid\r\n\r\nthis proposal assumes that the wallet instance could only be tracked with its public key, considering that it should have/use more than a single key, the risk is mitigated",
           "createdAt": "2023-05-22T20:26:56Z",
           "updatedAt": "2023-05-22T20:26:56Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "The `sub` could just be set to a fix value per wallet provider (most likely sub==iss). This is sufficient for authorization and auditing and it is privacy preserving since the wallet instances cannot be identified. ",
+          "createdAt": "2023-05-23T07:14:33Z",
+          "updatedAt": "2023-05-23T07:14:57Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "I'm not in favour of sub == iss since Wallet Provider and Wallet Instance are different subjects\r\n\r\nthe Wallet Provider (iss) issues the Wallet Instance Attestation to a Wallet Instance (sub), so these are definitively different\r\n\r\nif we admit that the only way to identify/trace a wallet instance is exploiting the public key (used in Holder binding) ad that the Wallet Instance should have more than a key and obtain fresh documents with a different key, we may assume that the subject identifier if the key, that's not unique, and that from this it could be derived the sub value",
+          "createdAt": "2023-05-23T17:33:02Z",
+          "updatedAt": "2023-05-23T17:33:02Z"
         }
       ]
     },
@@ -380,7 +422,7 @@
       "labels": [],
       "body": "@peppelinux: a client_id or a sub value for this use case can be derived with a simple thumbprint value of the cnf.jwk, just to bind the identity of the wallet instance to one of its public key\r\n\r\nI would suggest to leave this choice whether to bind sub and pop key to the wallet frontend",
       "createdAt": "2023-05-13T16:54:14Z",
-      "updatedAt": "2023-05-22T20:22:19Z",
+      "updatedAt": "2023-05-23T17:36:07Z",
       "closedAt": null,
       "comments": [
         {
@@ -389,6 +431,20 @@
           "body": "this issue is related to the doubts on removing client_id from the token endpoint (issuance phase)\r\n\r\nI'm in favor to keep client_id since there's a legacy schema for the token endpoint that we are technically able to respect, so I'd not break an existing token endpoint, keeping the client_id as it is using a resonable strategy to create it for the wallet instance without breaking privacy (multiple client_id each one derived from a public key of the wallet instance)",
           "createdAt": "2023-05-22T20:22:19Z",
           "updatedAt": "2023-05-22T20:22:19Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "I don't see a reason for having a relationship between sub and the pop key. I think the sub could just be set to the wallet provider name/ id. ",
+          "createdAt": "2023-05-23T07:16:49Z",
+          "updatedAt": "2023-05-23T07:16:49Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "Is this thread also relate to the one below?\r\nhttps://github.com/vcstuff/high-assurance-profile/issues/10#issuecomment-1559871971",
+          "createdAt": "2023-05-23T17:36:07Z",
+          "updatedAt": "2023-05-23T17:36:07Z"
         }
       ]
     },
@@ -566,7 +622,7 @@
       "labels": [],
       "body": "do we assume that the key used for the signature of the SIOPv2 id token must be attestable with a wallet instance attestation? from @peppelinux",
       "createdAt": "2023-05-16T20:24:05Z",
-      "updatedAt": "2023-05-22T20:13:50Z",
+      "updatedAt": "2023-05-23T17:38:11Z",
       "closedAt": null,
       "comments": [
         {
@@ -596,6 +652,20 @@
           "body": "> I don't understand the meaning of \"since the wallet instance attestation has the holder binding\".\r\n\r\n`cnf` claim in the payload of the Wallet Instance Attestation binds the holder public key in the JWS\r\n\r\n> it requests a wallet attestation VC in the same transaction.\r\n\r\nNot sure since the pseudonym should be also presented in offline flows. The Wallet Instance Attestation should expire and at the same time be usable in a configured time window\r\n\r\nif the wallet instance should have to ask a wallet instance attestation for every id token it issues the offline flows would not possible with pseudonymization\r\n\r\nI agree with your solution and at the same time I find the limits above, so I'd go for a wallet instance attestation usable in offline flows for pseudonymizations",
           "createdAt": "2023-05-22T20:13:50Z",
           "updatedAt": "2023-05-22T20:13:50Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "> cnf claim in the payload of the Wallet Instance Attestation binds the holder public key in the JWS\r\n\r\nThat seems to me a pretty constrained concept. What is the reason for this tight coupling?\r\n\r\nre offline: wallet attestations can be pre-fetched (batch issuance) and used in offline scenarios, too. ",
+          "createdAt": "2023-05-23T07:23:44Z",
+          "updatedAt": "2023-05-23T07:23:44Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "how to establish that the wallet instance that has issued that id token is the same that own that wallet instance attestation, since this latter is the sole proof that the wallet instance is reliable?",
+          "createdAt": "2023-05-23T17:38:11Z",
+          "updatedAt": "2023-05-23T17:38:11Z"
         }
       ]
     },
@@ -726,7 +796,428 @@
       "updatedAt": "2023-05-20T23:50:03Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 34,
+      "id": "I_kwDOJcWsFs5mqfC4",
+      "title": "Move Credential Refresh to Implementation Consideration",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/34",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Currently, the profile requires the implementation of Refresh Tokens for Credential refresh. This is especially needed for refresh of short living credentials and for gathering fresh copies of RP-specific/ephemeral credential. \r\n\r\nThose might be edge cases, so I suggest to replace the hard requirement by an implementation consideration how to solve those scenarios. This will make the implementation of the profile easier.  ",
+      "createdAt": "2023-05-23T16:20:53Z",
+      "updatedAt": "2023-05-23T16:20:53Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 35,
+      "id": "I_kwDOJcWsFs5mqfus",
+      "title": "Issuer URL and x.509 certs",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/35",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Use of DNSname SAN in credentials with x5c and web based lookup forces hosting of the jwt-issuer metadata at the top of the FQDN. Can we relax the requirement and allow for issuer URLs with path components?",
+      "createdAt": "2023-05-23T16:22:19Z",
+      "updatedAt": "2023-05-24T23:17:55Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "copying comment form Issuer #6.\r\n\r\n---\r\nI think what I would like to see is a clear validation logic, something like:\r\n- when only x509 is used (kid JOSE header is not present), iss is a SAN. when verifying, must be an absolute match btw the value in iss and x509 leaf cert.\r\n- when only web PKI based approach is used (x5c JOSE header is not present), iss is a URL where the key is hosted, it can include path and subdomain.\r\n- when both x509 and web PKI based are used (both x5c and kid header is present), iss is a URL where the key is hosted, can include path and subdomain. Verifier must strip down path and subdomain and use only the domain when comparing with the SAN in x509 cert.\r\n\r\nnot sure it is clean to use header parameters as a switch, but that's how the verifier will determine which mechanism is used, right?\r\n\r\ndon't know if it is a limitation, but essentially, Web PKI based approach must host the keys at the domain that is also in the x509 cert.",
+          "createdAt": "2023-05-24T23:17:55Z",
+          "updatedAt": "2023-05-24T23:17:55Z"
+        }
+      ]
     }
   ],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 33,
+      "id": "PR_kwDOJcWsFs5RJ7Me",
+      "title": "proposed changes after first review",
+      "url": "https://github.com/vcstuff/high-assurance-profile/pull/33",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-05-23T14:44:18Z",
+      "updatedAt": "2023-05-24T22:32:31Z",
+      "baseRepository": "vcstuff/high-assurance-profile",
+      "baseRefName": "main",
+      "baseRefOid": "591a60c45c9a4d2b9323d4d89722be0effb7b88a",
+      "headRepository": "vcstuff/high-assurance-profile",
+      "headRefName": "tl-review",
+      "headRefOid": "582a46356e8563f35cd8fc27f107225718319812",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJcWsFs5V-p4w",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T18:05:02Z",
+          "updatedAt": "2023-05-24T18:05:02Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "```suggestion\r\nThis document is not a specification, but a profile. It refers to the specifications required for implementations to interoperate among each other and for the optionalities mentioned in the referenced specifications, defines the set of features to be mandatory to implement.\r\n```",
+              "createdAt": "2023-05-24T18:05:02Z",
+              "updatedAt": "2023-05-24T18:05:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V-tv9",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T18:16:34Z",
+          "updatedAt": "2023-05-24T18:16:35Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "```suggestion\r\nThe profile uses OpenID for Verifiable Credential Issuance [@!OIDF.OID4VCI] and OpenID for Verifiable Presentations [@!OIDF.OID4VP] as the base protocols for issuance and presentation of Credentials, respectively. The credential format used in the profile are W3C Verifiable Credentials secured using Selective Disclosure for JWTs (SD-JWT) according to the VC Data Model v2.0 [@VC-DATA], designated as VC-SD-JWTs. Additionally, considerations are given on how deployments can perform a combined issuance of credentials in both VC-SD-JWT and ISO mdoc [@ISO.18013-5] formats.\r\n```",
+              "createdAt": "2023-05-24T18:16:34Z",
+              "updatedAt": "2023-05-24T18:16:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V-v9J",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T18:22:52Z",
+          "updatedAt": "2023-05-24T18:22:52Z",
+          "comments": [
+            {
+              "originalPosition": 37,
+              "body": "why did you remove `instance`?",
+              "createdAt": "2023-05-24T18:22:52Z",
+              "updatedAt": "2023-05-24T18:22:52Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V-wxi",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T18:24:52Z",
+          "updatedAt": "2023-05-24T18:24:53Z",
+          "comments": [
+            {
+              "originalPosition": 36,
+              "body": "```suggestion\r\n* Protocol for User Authentication by the Wallet at a Verifier (SIOP v2)\r\n```",
+              "createdAt": "2023-05-24T18:24:52Z",
+              "updatedAt": "2023-05-24T18:24:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V-xgp",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T18:26:11Z",
+          "updatedAt": "2023-05-24T18:26:11Z",
+          "comments": [
+            {
+              "originalPosition": 81,
+              "body": "```suggestion\r\nNote: The Authorization Code flow does not require a Credential Offer from the Issuer to the Wallet. However, it is included in the feature set of the Credential Offer because it might be easier to implement with existing libraries and on top of existing implementations than the pre-authorized code Grant Type.\r\n\r\nBoth sending Credential Offer same-device and cross-device is supported.\r\n```",
+              "createdAt": "2023-05-24T18:26:11Z",
+              "updatedAt": "2023-05-24T18:29:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V-yCp",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T18:27:37Z",
+          "updatedAt": "2023-05-24T18:27:37Z",
+          "comments": [
+            {
+              "originalPosition": 71,
+              "body": "```suggestion\r\n* MUST support sender-constrained Tokens using a mechanism as defined in [@!I-D.ietf-oauth-dpop].\r\n\r\nBoth Wallet initiated and Issuer initiated issuance is supported.\r\n```",
+              "createdAt": "2023-05-24T18:27:37Z",
+              "updatedAt": "2023-05-24T18:27:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V-zQj",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T18:31:11Z",
+          "updatedAt": "2023-05-24T18:31:12Z",
+          "comments": [
+            {
+              "originalPosition": 103,
+              "body": "```suggestion\r\n   * Refresh tokens MUST be supported for credential refresh.\r\n   * Wallets MUST support deferred authorization by being able to process the Token error response parameters `authorization_pending` and `slow_down`, and the credential offer parameter `interval`.\r\n   * The wallet attestation JWT scheme is defined in (#wallet-attestation-schema).\r\n```",
+              "createdAt": "2023-05-24T18:31:12Z",
+              "updatedAt": "2023-05-24T18:32:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V-z6_",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T18:33:03Z",
+          "updatedAt": "2023-05-24T18:33:03Z",
+          "comments": [
+            {
+              "originalPosition": 123,
+              "body": "```suggestion\r\n* The Credential Issuer MUST publish a mapping of every Credential Type it supports to a scope value.\r\n```",
+              "createdAt": "2023-05-24T18:33:03Z",
+              "updatedAt": "2023-05-24T18:33:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V-0lW",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T18:34:49Z",
+          "updatedAt": "2023-05-24T18:34:50Z",
+          "comments": [
+            {
+              "originalPosition": 136,
+              "body": "```suggestion\r\n   * `client_id_scheme` value MUST be either `x509_san_dns` or `verifier_attestation`. Wallet MUST support both. Verifier MUST support at least one. (pending OID4VCI PR#485 for x509, need a OID4VCI PR on verifier_attestation)\r\n```",
+              "createdAt": "2023-05-24T18:34:50Z",
+              "updatedAt": "2023-05-24T18:34:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V-0tS",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T18:35:14Z",
+          "updatedAt": "2023-05-24T18:35:14Z",
+          "comments": [
+            {
+              "originalPosition": 153,
+              "body": "```suggestion\r\n   * As a way to invoke the Wallet, at least a custom URL scheme `haip://` MUST be supported. Implementations MAY support other ways to invoke the wallets as agreed by trust frameworks/ecosystems/jurisdictions, not limited to using other custom URL schemes.\r\n```",
+              "createdAt": "2023-05-24T18:35:14Z",
+              "updatedAt": "2023-05-24T18:35:14Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V-0xi",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T18:35:24Z",
+          "updatedAt": "2023-05-24T18:35:25Z",
+          "comments": [
+            {
+              "originalPosition": 160,
+              "body": "```suggestion\r\nAs credential format, VC-SD-JWT as defined in [!I-D.ietf-terbu-sd-jwt-vc] MUST be used.\r\n```",
+              "createdAt": "2023-05-24T18:35:25Z",
+              "updatedAt": "2023-05-24T18:35:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V-8A8",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T18:56:30Z",
+          "updatedAt": "2023-05-24T18:56:31Z",
+          "comments": [
+            {
+              "originalPosition": 195,
+              "body": "this seems duplicative with line 192. how about the order of 194 -> 192&196 consolidated?",
+              "createdAt": "2023-05-24T18:56:30Z",
+              "updatedAt": "2023-05-24T18:56:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V-8M4",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T18:57:03Z",
+          "updatedAt": "2023-05-24T18:57:03Z",
+          "comments": [
+            {
+              "originalPosition": 186,
+              "body": "I think this is an important note?",
+              "createdAt": "2023-05-24T18:57:03Z",
+              "updatedAt": "2023-05-24T18:57:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V-8XO",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T18:57:30Z",
+          "updatedAt": "2023-05-24T18:57:30Z",
+          "comments": [
+            {
+              "originalPosition": 205,
+              "body": "```suggestion\r\nNote: If there is a requirement to provide the Subject\u2019s identifier assigned and maintained by the Issuer, `sub` claim MAY be used. There is no requirement for a binding to exist between `sub` and `cnf` claims. See section X in [!I-D.draft-terbu-sd-jwt-vc] for implementation considerations.\r\n```",
+              "createdAt": "2023-05-24T18:57:30Z",
+              "updatedAt": "2023-05-24T18:57:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V-8qK",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T18:58:17Z",
+          "updatedAt": "2023-05-24T18:58:18Z",
+          "comments": [
+            {
+              "originalPosition": 201,
+              "body": "```suggestion\r\nNote: If there is a requirement to communicate information about the verification status and identity assurance data of the claims about the subject, the syntax defined by [@!OIDF.ekyc-ida] SHOULD be used. It is up to each jurisdiction and ecosystem, whether to require it to the implementers of this profile.\r\n```",
+              "createdAt": "2023-05-24T18:58:17Z",
+              "updatedAt": "2023-05-24T18:58:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V_99u",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T22:29:53Z",
+          "updatedAt": "2023-05-24T22:29:53Z",
+          "comments": [
+            {
+              "originalPosition": 214,
+              "body": "```suggestion\r\nThis profile supports two ways to represent and resolves the key required to validate the issuer signature of a VC-SD-JWT, web PKI-based key resolution and x.509 certificates.\r\n```",
+              "createdAt": "2023-05-24T22:29:53Z",
+              "updatedAt": "2023-05-24T22:29:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V_-TS",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-24T22:31:39Z",
+          "updatedAt": "2023-05-24T22:31:40Z",
+          "comments": [
+            {
+              "originalPosition": 226,
+              "body": "I think we can remove this section (lines 215-217) since now HB JWT is defined in SD-JWT spec itself and oliver's draft mandates HB jwt?",
+              "createdAt": "2023-05-24T22:31:40Z",
+              "updatedAt": "2023-05-24T22:31:40Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5V_-cO",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "done reviewing. suggested some changes.",
+          "createdAt": "2023-05-24T22:32:31Z",
+          "updatedAt": "2023-05-24T22:32:31Z",
+          "comments": []
+        }
+      ]
+    }
+  ]
 }
