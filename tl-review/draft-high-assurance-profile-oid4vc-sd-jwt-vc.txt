@@ -329,7 +329,7 @@ Table of Contents
 
 7.  SD-JWT VCs
 
-   As credential format, VC-SD-JWT VC as defined in [!I-D.ietf-terbu-sd-
+   As credential format, VC-SD-JWT as defined in [!I-D.ietf-terbu-sd-
    jwt-vc] MUST be used.
 
    In addition, this profile defines the following additional
