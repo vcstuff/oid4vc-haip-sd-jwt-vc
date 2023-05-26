@@ -17,7 +17,7 @@
 <meta content="draft-high-assurance-profile-oid4vc-sd-jwt-vc-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.17.1
-    Python 3.10.11
+    Python 3.11.3
     appdirs 1.4.4
     ConfigArgParse 1.5.3
     google-i18n-address 2.5.2
@@ -26,8 +26,8 @@
     lxml 4.9.2
     pycountry 22.3.5
     PyYAML 6.0
-    requests 2.28.1
-    setuptools 65.6.0
+    requests 2.30.0
+    setuptools 67.7.2
     six 1.16.0
     wcwidth 0.2.6
 -->
@@ -1064,7 +1064,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="workgroup">OpenID Connect</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-05-17" class="published">17 May 2023</time>
+<time datetime="2023-05-26" class="published">26 May 2023</time>
     </dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
@@ -1416,7 +1416,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </li>
         <li class="normal" id="section-5-1.7">When the Client Identifier Scheme is <code>x509_san_uri</code>, the Client Identifier MUST be URI and match the <code>uniformResourceIdentifier</code> Subject Alternative Name (SAN) <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span> entry in the leaf certificate passed with the request. The request MUST be signed with the private key corresponding to the public key in the leaf X.509 certificate of the certificate chain added to the request in the <code>x5c</code> JOSE header <span>[<a href="#RFC7515" class="cite xref">RFC7515</a>]</span> of the signed request object. The Wallet MUST validate the signature and the trust chain of the X.509 certificate. All Verifier metadata other than the public key MUST be obtained from the <code>client_metadata</code> parameter.<a href="#section-5-1.7" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-5-1.8">When the Client Identifier Scheme is <code>verifier_attestation</code>, the Client Identifier MUST equal <code>sub</code> claim value in the Verifier attestation JWT. The request MUST be signed with the private key corresponding to the public key in the <code>cnf</code> claim in the Verifier attestation JWT. The Verifier attestation VC MUST be added to a newly defined <code>verifier_attestation</code> JOSE Header of a request object. The Wallet MUST validate the signature on the Verifier attestation JWT by a trusted third party. Verifier metadata MUST be obtained from the Verifier attestation JWT. Schema of the verifier attestation VC is define in the Annex.<a href="#section-5-1.8" class="pilcrow">¶</a>
+        <li class="normal" id="section-5-1.8">When the Client Identifier Scheme is <code>verifier_attestation</code>, the Client Identifier MUST equal <code>sub</code> claim value in the Verifier attestation JWT. The request MUST be signed with the private key corresponding to the public key in the <code>cnf</code> claim in the Verifier attestation JWT. The Verifier attestation VC MUST be added to a newly defined <code>verifier_attestation</code> JOSE Header of a request object. The Wallet MUST validate the signature on the Verifier attestation JWT by a trusted third party. Verifier metadata MUST be obtained from the Verifier attestation JWT. Schema of the verifier attestation VC is defined in the Annex.<a href="#section-5-1.8" class="pilcrow">¶</a>
 </li>
         <li class="normal" id="section-5-1.9">Presentation Definition JSON object MUST be sent using a <code>presentation_definition</code> parameter.<a href="#section-5-1.9" class="pilcrow">¶</a>
 </li>
@@ -1444,7 +1444,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <li class="normal" id="section-6-2.1">
           <code>subject_syntax_types_supported</code> value MUST be <code>urn:ietf:params:oauth:jwk-thumbprint</code><a href="#section-6-2.1" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-6-2.2">As a way to invoke the Wallet, at least a custom URL scheme haip:// MUST be supported. Implementations MAY support other ways to invoke the wallets as agreed by trust frameworks/ecosystems/jurisdictions, not limited to using other custom URL schemes.<a href="#section-6-2.2" class="pilcrow">¶</a>
+        <li class="normal" id="section-6-2.2">As a way to invoke the Wallet, at least a custom URL scheme <code>haip://</code> MUST be supported. Implementations MAY support other ways to invoke the wallets as agreed by trust frameworks/ecosystems/jurisdictions, not limited to using other custom URL schemes.<a href="#section-6-2.2" class="pilcrow">¶</a>
 </li>
       </ul>
 </section>
@@ -1539,7 +1539,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <ul class="normal">
 <li class="normal" id="section-7.1-1.1">When <code>iss</code> claim is an HTTPS URL, the key used to validate the Issuer's signature on the SD-JWT VC MUST be hosted at the .well-known path as defined in draft-terbu-sd-jwt-vc. JOSE header <code>kid</code> MUST be used to obtain the key.<a href="#section-7.1-1.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="section-7.1-1.2">When the <code>iss' identifier is a Subject Alternative Name (SAN), and the key used to validate the Issuer's signature on the SD-JWT VC MUST be obtained from the</code>x5c` JOSE header.<a href="#section-7.1-1.2" class="pilcrow">¶</a>
+          <li class="normal" id="section-7.1-1.2">When the <code>iss</code> identifier is a Subject Alternative Name (SAN), and the key used to validate the Issuer's signature on the SD-JWT VC MUST be obtained from the <code>x5c</code> JOSE header.<a href="#section-7.1-1.2" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="section-7.1-2">Note: The issuer MAY decide to support both options. In which case, it is at the discretion of the Wallet and the Verifier which key to use for the issuer signature validation.<a href="#section-7.1-2" class="pilcrow">¶</a></p>
@@ -1551,7 +1551,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-holder-key-resolution" class="section-name selfRef">Holder key resolution</a>
         </h3>
 <ul class="normal">
-<li class="normal" id="section-7.2-1.1">The public key passed in the <code>cnf</code> claim <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span> MUST be a JSON Web Key <span>[<a href="#RFC7517" class="cite xref">RFC7517</a>]</span> contained in the <code>jwk</code> claim. <code>kid' MUST be included in the JWK in the</code>cnf` claim, since it will be used in the JOSE Header.<a href="#section-7.2-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-7.2-1.1">The public key passed in the <code>cnf</code> claim <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span> MUST be a JSON Web Key <span>[<a href="#RFC7517" class="cite xref">RFC7517</a>]</span> contained in the <code>jwk</code> claim. <code>kid</code> MUST be included in the JWK in the <code>cnf</code> claim, since it will be used in the JOSE Header.<a href="#section-7.2-1.1" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="section-7.2-2">Note: this requirement might change when claim-based and biometrics-based holder binding become available.<a href="#section-7.2-2" class="pilcrow">¶</a></p>

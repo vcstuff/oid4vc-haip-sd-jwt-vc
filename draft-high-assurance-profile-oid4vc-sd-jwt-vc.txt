@@ -6,7 +6,7 @@ OpenID Connect                                                 K. Yasuda
                                                                Microsoft
                                                           T. Lodderstedt
                                                                  yes.com
-                                                             17 May 2023
+                                                             26 May 2023
 
 
            High Assurance Profile of OpenID4VC with SD-JWT-VC
@@ -270,7 +270,7 @@ Table of Contents
       object.  The Wallet MUST validate the signature on the Verifier
       attestation JWT by a trusted third party.  Verifier metadata MUST
       be obtained from the Verifier attestation JWT.  Schema of the
-      verifier attestation VC is define in the Annex.
+      verifier attestation VC is defined in the Annex.
 
    *  Presentation Definition JSON object MUST be sent using a
       presentation_definition parameter.
@@ -406,9 +406,9 @@ Table of Contents
       known path as defined in draft-terbu-sd-jwt-vc.  JOSE header kid
       MUST be used to obtain the key.
 
-   *  When the iss' identifier is a Subject Alternative Name (SAN), and
+   *  When the iss identifier is a Subject Alternative Name (SAN), and
       the key used to validate the Issuer's signature on the SD-JWT VC
-      MUST be obtained from thex5c` JOSE header.
+      MUST be obtained from the x5c JOSE header.
 
    Note: The issuer MAY decide to support both options.  In which case,
    it is at the discretion of the Wallet and the Verifier which key to
@@ -417,9 +417,9 @@ Table of Contents
 7.2.  Holder key resolution
 
    *  The public key passed in the cnf claim [RFC7800] MUST be a JSON
-      Web Key [RFC7517] contained in the jwk claim. kid' MUST be
-      included in the JWK in thecnf` claim, since it will be used in the
-      JOSE Header.
+      Web Key [RFC7517] contained in the jwk claim. kid MUST be included
+      in the JWK in the cnf claim, since it will be used in the JOSE
+      Header.
 
    Note: this requirement might change when claim-based and biometrics-
    based holder binding become available.
