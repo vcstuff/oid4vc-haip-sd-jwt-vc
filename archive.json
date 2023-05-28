@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-05-25T00:24:16.537705+00:00",
+  "timestamp": "2023-05-28T00:29:15.071876+00:00",
   "repo": "vcstuff/high-assurance-profile",
   "labels": [
     {
@@ -52,6 +52,11 @@
       "name": "pending-close",
       "description": "",
       "color": "860DE9"
+    },
+    {
+      "name": "needs-implementation-experience",
+      "description": "",
+      "color": "5D0117"
     }
   ],
   "issues": [
@@ -185,7 +190,7 @@
       "labels": [],
       "body": "Which HTTPS URL does the issuer use when x.509 is used? SAN? if we mandate issuer to do both x.509 and SAN, does that mean issuers must make sure /JWT-issuer is hosted under SAN? Isn\u2019t that pretty limiting? (I am not necessarily opposed to \u201ciss is always a URL, just trying to understand the implications)",
       "createdAt": "2023-05-13T14:53:32Z",
-      "updatedAt": "2023-05-24T23:16:37Z",
+      "updatedAt": "2023-05-26T19:03:59Z",
       "closedAt": null,
       "comments": [
         {
@@ -204,7 +209,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "If the goal of the x5c is the key attestation, this works fine.\r\n\r\nIf instead policies and additional information like metadata are required, x5c simply doesn't work unless it would be \"inflated\" with custom elements for carrying metadata and policies and grants. That from what can be said about x509, inflating it so much would be like making an 80-year-old man do bodybuilding!\r\n\r\nI suggest the inclusion of OIDC Federation Trust chain in this profile, that's both web attested key and chain of verifiable statements issued by more than a single party.\r\n\r\nthe key question is: what defines the level high? key attestations (as oidc core did for years) or a high level would bring also grants/policies, metadata and all the interop schema as high verifiable and assured?\r\n\r\nSince every issued VC or any kind of attestation should not be repudiable in the future, that's something pertaining the assurance level I think",
           "createdAt": "2023-05-20T20:29:33Z",
           "updatedAt": "2023-05-21T21:49:57Z"
@@ -218,7 +223,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "I agreed, since federation only uses HTTPs but from Draft 29 there's the trust_chain JWS header claim that allows metadata, keys and policies attestation even in offline flows\r\n\r\nan https alone is not attestable in offline flows and x509 doesn't have metadata, policies and trust marks/additional-VCs in it related to the issuer\r\n\r\nfederation trust_chain has",
           "createdAt": "2023-05-22T20:42:19Z",
           "updatedAt": "2023-05-22T20:42:19Z"
@@ -232,17 +237,10 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "yes, I went quite out of the border\r\n\r\nThe question is there any interest to have different kind of issuer identifiers?\r\n\r\nI'm in favor of HTTP URLs, even if there may be some cases where a did resolution methods resolve to HTTPs URL as well, as discussed in the issue below:\r\nhttps://github.com/vcstuff/draft-terbu-sd-jwt-vc/issues/41#issuecomment-1546743042\r\n\r\nAnyway, if there are milestone in this project this question doesn' seem a priority since that this profile can satisfy its scope using HTTPs URL\r\n\r\nso accept my excuse for the noise, it was just for sharing\r\n\r\n",
           "createdAt": "2023-05-23T17:29:21Z",
           "updatedAt": "2023-05-23T17:29:21Z"
-        },
-        {
-          "author": "Sakurann",
-          "authorAssociation": "CONTRIBUTOR",
-          "body": "@paulbastian \r\n> EV and QWAC work the same way\r\n\r\nCould you please elaborate a bit? what is EV?",
-          "createdAt": "2023-05-24T22:37:22Z",
-          "updatedAt": "2023-05-24T22:37:22Z"
         },
         {
           "author": "Sakurann",
@@ -262,15 +260,17 @@
       "author": "Sakurann",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "needs-implementation-experience"
+      ],
       "body": "there are currently two options for issuer key resolution: web PKI based one and X.509 based one. current text states, \"iissuer supports one of the options, wallet and verifier support both\", but @tlodderstedt is right that this will make the life of verifiers (and wallets) really hard. \r\nprobably need to discuss what it means for the issuer to support both x.509 and web pki based...",
       "createdAt": "2023-05-13T15:18:02Z",
-      "updatedAt": "2023-05-22T20:32:01Z",
+      "updatedAt": "2023-05-26T21:53:49Z",
       "closedAt": null,
       "comments": [
         {
           "author": "peppelinux",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "since the revocation for x509 should be always attested with web retrieval mechanisms, and that x509 works for key attestation only and needs to be extended with custom attributes to satisfy the requirements for policies and metadata/capabilities retrieval\r\n\r\nI'm in favour of using federation trust_chain as the best way to go to satisfy all the requirements for a high assurance profile that attests also grants and capabilities and not just the identity of an entity\r\n\r\nthen the question would be, where are the requirements?\r\nIt is still a work in progress but in a way or another it is becoming part of our shared knowledge:\r\n\r\nhttps://docs.google.com/document/d/1Dk_8UmytCI4VhCx5VMnXmEzdXRvgJozGeq1GNHZOQik/edit#heading=h.jb7a7nddoxft",
           "createdAt": "2023-05-22T20:32:01Z",
           "updatedAt": "2023-05-22T20:32:01Z"
@@ -346,7 +346,7 @@
       ],
       "body": "The text current wallet attestation draft says:\r\n> The JWT MUST contain a \"sub\" (subject) claim with a value corresponding to the \"client_id\" of the OAuth client.\r\n\r\nthe thing is.. when there has been no pre-existing relationship between the issuer and the wallet, which `client_id` value does the wallet uses..?",
       "createdAt": "2023-05-13T15:55:49Z",
-      "updatedAt": "2023-05-23T17:33:03Z",
+      "updatedAt": "2023-05-25T13:55:12Z",
       "closedAt": null,
       "comments": [
         {
@@ -365,7 +365,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "I suggest the jwk thumbprint value for the sub value (and consequently for the client_id in the issuance flow)\r\n\r\nthe sub will be always derived from the cnf.jwk, producing a privacy-preserving value since it would be like a kid\r\n\r\nthis proposal assumes that the wallet instance could only be tracked with its public key, considering that it should have/use more than a single key, the risk is mitigated",
           "createdAt": "2023-05-22T20:26:56Z",
           "updatedAt": "2023-05-22T20:26:56Z"
@@ -379,10 +379,17 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "I'm not in favour of sub == iss since Wallet Provider and Wallet Instance are different subjects\r\n\r\nthe Wallet Provider (iss) issues the Wallet Instance Attestation to a Wallet Instance (sub), so these are definitively different\r\n\r\nif we admit that the only way to identify/trace a wallet instance is exploiting the public key (used in Holder binding) ad that the Wallet Instance should have more than a key and obtain fresh documents with a different key, we may assume that the subject identifier if the key, that's not unique, and that from this it could be derived the sub value",
           "createdAt": "2023-05-23T17:33:02Z",
           "updatedAt": "2023-05-23T17:33:02Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "In my mental model, the sub is the client id the wallet uses to perform authorization and auditing. I would assume that happens on the level of the wallet provider (or wallet product) but not on instance level. ",
+          "createdAt": "2023-05-25T13:55:12Z",
+          "updatedAt": "2023-05-25T13:55:12Z"
         }
       ]
     },
@@ -422,12 +429,12 @@
       "labels": [],
       "body": "@peppelinux: a client_id or a sub value for this use case can be derived with a simple thumbprint value of the cnf.jwk, just to bind the identity of the wallet instance to one of its public key\r\n\r\nI would suggest to leave this choice whether to bind sub and pop key to the wallet frontend",
       "createdAt": "2023-05-13T16:54:14Z",
-      "updatedAt": "2023-05-23T17:36:07Z",
+      "updatedAt": "2023-05-25T13:57:14Z",
       "closedAt": null,
       "comments": [
         {
           "author": "peppelinux",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "this issue is related to the doubts on removing client_id from the token endpoint (issuance phase)\r\n\r\nI'm in favor to keep client_id since there's a legacy schema for the token endpoint that we are technically able to respect, so I'd not break an existing token endpoint, keeping the client_id as it is using a resonable strategy to create it for the wallet instance without breaking privacy (multiple client_id each one derived from a public key of the wallet instance)",
           "createdAt": "2023-05-22T20:22:19Z",
           "updatedAt": "2023-05-22T20:22:19Z"
@@ -441,10 +448,17 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "Is this thread also relate to the one below?\r\nhttps://github.com/vcstuff/high-assurance-profile/issues/10#issuecomment-1559871971",
           "createdAt": "2023-05-23T17:36:07Z",
           "updatedAt": "2023-05-23T17:36:07Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "yep",
+          "createdAt": "2023-05-25T13:57:14Z",
+          "updatedAt": "2023-05-25T13:57:14Z"
         }
       ]
     },
@@ -622,7 +636,7 @@
       "labels": [],
       "body": "do we assume that the key used for the signature of the SIOPv2 id token must be attestable with a wallet instance attestation? from @peppelinux",
       "createdAt": "2023-05-16T20:24:05Z",
-      "updatedAt": "2023-05-23T17:38:11Z",
+      "updatedAt": "2023-05-25T13:52:20Z",
       "closedAt": null,
       "comments": [
         {
@@ -634,7 +648,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "My bad since I didn't understand.\r\n\r\nI assume that the SIOP, then the material issuer of the id token, is the Wallet Instance and not the Wallet Provider.\r\nI assume that a SIOP may issue an id token including the wallet instance attestation containing the public key used to verify the signature of the id token, since the wallet instance attestation has the holder binding\r\n\r\nthe verifier given the id token and the wallet instance attestation, is able to trust that the wallet is secure and compliat to eidas, considering that the Wallet Instance Attestation SHOULD contain the trust chain (or x5c...) to give the proof that the Wallet Provider, that's its issuer, is reliable and attestable as trustworthy ",
           "createdAt": "2023-05-20T20:36:26Z",
           "updatedAt": "2023-05-20T20:36:26Z"
@@ -648,7 +662,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "> I don't understand the meaning of \"since the wallet instance attestation has the holder binding\".\r\n\r\n`cnf` claim in the payload of the Wallet Instance Attestation binds the holder public key in the JWS\r\n\r\n> it requests a wallet attestation VC in the same transaction.\r\n\r\nNot sure since the pseudonym should be also presented in offline flows. The Wallet Instance Attestation should expire and at the same time be usable in a configured time window\r\n\r\nif the wallet instance should have to ask a wallet instance attestation for every id token it issues the offline flows would not possible with pseudonymization\r\n\r\nI agree with your solution and at the same time I find the limits above, so I'd go for a wallet instance attestation usable in offline flows for pseudonymizations",
           "createdAt": "2023-05-22T20:13:50Z",
           "updatedAt": "2023-05-22T20:13:50Z"
@@ -662,10 +676,17 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "how to establish that the wallet instance that has issued that id token is the same that own that wallet instance attestation, since this latter is the sole proof that the wallet instance is reliable?",
           "createdAt": "2023-05-23T17:38:11Z",
           "updatedAt": "2023-05-23T17:38:11Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "body": "It is not the wallet instance issuing the id token, it is the holder. The attestation answers the question whether the wallet can be trusted to securely manage the keys on behalf of the holder. There is no need to create any relationship between the keys. ",
+          "createdAt": "2023-05-25T13:52:20Z",
+          "updatedAt": "2023-05-25T13:52:20Z"
         }
       ]
     },
@@ -753,17 +774,9 @@
       "labels": [],
       "body": "> scope parameter MUST be communicated from the Issuer to the Wallet either in the Credential Offer, or Credential Issuer metadata.\r\n\r\nWe need to define the respective issuer metadata.",
       "createdAt": "2023-05-18T14:31:21Z",
-      "updatedAt": "2023-05-22T20:07:51Z",
+      "updatedAt": "2023-05-25T14:18:02Z",
       "closedAt": null,
-      "comments": [
-        {
-          "author": "peppelinux",
-          "authorAssociation": "NONE",
-          "body": "using OIDC Federation trust_chain JWS header, the metadata of the issuer is derived from the trust chain\r\nand cannot be repudiated by the issuer, even if its keys will change in the future\r\n\r\noidc dynamic client registration has defined the metadata parameter \"scopes\", is there the possibility to use the same also in the credential issuer metadata?",
-          "createdAt": "2023-05-21T00:00:28Z",
-          "updatedAt": "2023-05-22T20:07:51Z"
-        }
-      ]
+      "comments": []
     },
     {
       "number": 31,
@@ -836,6 +849,70 @@
           "updatedAt": "2023-05-24T23:17:55Z"
         }
       ]
+    },
+    {
+      "number": 37,
+      "id": "I_kwDOJcWsFs5nAk7v",
+      "title": "private claims",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/37",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "see if we need to re-add the following sentence based on how [this PR](https://github.com/vcstuff/draft-terbu-sd-jwt-vc/issues/108) in sd-jwt-vc does:\r\n> Further claims, either registered or private JWT claims, can be added to the credential as required by the respective credential type, or determined by the Issuer or the Holder. All claims that are not understood by implementations MUST be ignored, as defined in section 4, [@!RFC7519].",
+      "createdAt": "2023-05-26T20:24:33Z",
+      "updatedAt": "2023-05-26T20:24:33Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 38,
+      "id": "I_kwDOJcWsFs5nAqbZ",
+      "title": "remove hb jwt requirement once it is mandatory in sd-jwt vc",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/38",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Conditional to https://github.com/vcstuff/draft-terbu-sd-jwt-vc/issues/110",
+      "createdAt": "2023-05-26T20:47:58Z",
+      "updatedAt": "2023-05-26T20:47:58Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 39,
+      "id": "I_kwDOJcWsFs5nAxJu",
+      "title": "do we need to define key size?",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/39",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "just for the reference [FAPI](https://openid.net/specs/openid-financial-api-part-1-1_0.html) defines\r\n\r\n> - shall require and use a key of size 2048 bits or larger for RSA algorithms;\r\n> - shall require and use a key of size 160 bits or larger for elliptic curve algorithms;",
+      "createdAt": "2023-05-26T21:14:58Z",
+      "updatedAt": "2023-05-26T21:14:58Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 41,
+      "id": "I_kwDOJcWsFs5nA2ET",
+      "title": "relax refresh tokens requirement?",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/41",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I was surprised to find that [FAPI](https://openid.net/specs/openid-financial-api-part-1-1_0.html) does not mandate refresh tokens. maybe this profile should also relax mandating refresh tokens..\r\n> the use of refresh tokens instead of long-lived access tokens for both public and confidential clients is recommended.",
+      "createdAt": "2023-05-26T21:43:25Z",
+      "updatedAt": "2023-05-26T21:43:42Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -851,13 +928,13 @@
       "labels": [],
       "body": "",
       "createdAt": "2023-05-23T14:44:18Z",
-      "updatedAt": "2023-05-24T22:32:31Z",
+      "updatedAt": "2023-05-26T20:48:47Z",
       "baseRepository": "vcstuff/high-assurance-profile",
       "baseRefName": "main",
-      "baseRefOid": "591a60c45c9a4d2b9323d4d89722be0effb7b88a",
+      "baseRefOid": "249c5778274af172f98f77e48819b4c3583a2620",
       "headRepository": "vcstuff/high-assurance-profile",
       "headRefName": "tl-review",
-      "headRefOid": "582a46356e8563f35cd8fc27f107225718319812",
+      "headRefOid": "2a01d7141958480ff54b71b2ebb3f66cb51b9c0b",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -1216,8 +1293,261 @@
           "createdAt": "2023-05-24T22:32:31Z",
           "updatedAt": "2023-05-24T22:32:31Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5WJMFC",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-26T06:28:33Z",
+          "updatedAt": "2023-05-26T06:28:34Z",
+          "comments": [
+            {
+              "originalPosition": 37,
+              "body": "because I think the aim is to attest the wallet, not a certain instance - An issuer needs to know it is talking to a trustworthy wallet (wallet provider/product), not a certain instance",
+              "createdAt": "2023-05-26T06:28:33Z",
+              "updatedAt": "2023-05-26T06:28:34Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5WLxIW",
+          "commit": {
+            "abbreviatedOid": "72f6e5d"
+          },
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-26T10:31:07Z",
+          "updatedAt": "2023-05-26T10:31:08Z",
+          "comments": [
+            {
+              "originalPosition": 186,
+              "body": "I agree. I proposed to remove it since literally the same sentence was in the vc-sd-jwt draft. I just checked and it seems the draft text has changed and explicitly states private claims are out of scope. Don't understand the rationale. \r\n<img width=\"675\" alt=\"image\" src=\"https://github.com/vcstuff/high-assurance-profile/assets/328358/0051bd74-5426-461b-a469-b84c42b7df52\">\r\n ",
+              "createdAt": "2023-05-26T10:31:07Z",
+              "updatedAt": "2023-05-26T10:31:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5WLyFE",
+          "commit": {
+            "abbreviatedOid": "72f6e5d"
+          },
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-26T10:33:37Z",
+          "updatedAt": "2023-05-26T10:33:37Z",
+          "comments": [
+            {
+              "originalPosition": 195,
+              "body": "192 is \"It is at the discretion of the Issuer whether to use `exp` claim and/or a `status` claim to express the validity period of an SD-JWT-VC. The wallet and the verifier  MUST support both mechanisms\". I don't understand. \r\n",
+              "createdAt": "2023-05-26T10:33:37Z",
+              "updatedAt": "2023-05-26T10:33:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5WL0mu",
+          "commit": {
+            "abbreviatedOid": "cdc2eb4"
+          },
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-26T10:40:08Z",
+          "updatedAt": "2023-05-26T10:40:08Z",
+          "comments": [
+            {
+              "originalPosition": 214,
+              "body": "Why would you call it web PKI? I think web based key resolution is sufficient. ",
+              "createdAt": "2023-05-26T10:40:08Z",
+              "updatedAt": "2023-05-26T10:40:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5WL2r8",
+          "commit": {
+            "abbreviatedOid": "cdc2eb4"
+          },
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-26T10:45:20Z",
+          "updatedAt": "2023-05-26T10:45:20Z",
+          "comments": [
+            {
+              "originalPosition": 226,
+              "body": "The current text leaves it open and only requires the validation of the HB JWT, if present. \r\n\r\nhttps://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html#name-presenting-verifiable-crede\r\n\r\nOur current text always requires a presentation to have the HB JWT. ",
+              "createdAt": "2023-05-26T10:45:20Z",
+              "updatedAt": "2023-05-26T10:45:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5WPhZu",
+          "commit": {
+            "abbreviatedOid": "2a01d71"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-26T20:24:51Z",
+          "updatedAt": "2023-05-26T20:24:52Z",
+          "comments": [
+            {
+              "originalPosition": 186,
+              "body": "ok, opened an issue/PR in sd-jwt-vc and an issue #37 in this repo",
+              "createdAt": "2023-05-26T20:24:51Z",
+              "updatedAt": "2023-05-26T20:24:52Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5WPhfd",
+          "commit": {
+            "abbreviatedOid": "2a01d71"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-26T20:25:15Z",
+          "updatedAt": "2023-05-26T20:25:15Z",
+          "comments": [
+            {
+              "originalPosition": 37,
+              "body": "ok..",
+              "createdAt": "2023-05-26T20:25:15Z",
+              "updatedAt": "2023-05-26T20:25:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5WPhxB",
+          "commit": {
+            "abbreviatedOid": "2a01d71"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-26T20:26:26Z",
+          "updatedAt": "2023-05-26T20:48:46Z",
+          "comments": [
+            {
+              "originalPosition": 195,
+              "body": "the line numbers moved because of the changes accepted. with the new lines, it will be 198 -> 196&200 consoludated.",
+              "createdAt": "2023-05-26T20:26:26Z",
+              "updatedAt": "2023-05-26T20:48:46Z"
+            },
+            {
+              "originalPosition": 214,
+              "body": "it's trust in the DNS sytem, that allows to trust the .well-known path. i thought it should be clearer",
+              "createdAt": "2023-05-26T20:42:32Z",
+              "updatedAt": "2023-05-26T20:48:46Z"
+            },
+            {
+              "originalPosition": 226,
+              "body": "oh wow, I thought we have agreed to make HB-JWT mandatory in sd-jwt vc. opened an [issue #110](https://github.com/vcstuff/draft-terbu-sd-jwt-vc/issues/110) there and here - issue #38",
+              "createdAt": "2023-05-26T20:48:41Z",
+              "updatedAt": "2023-05-26T20:48:47Z"
+            }
+          ]
         }
       ]
+    },
+    {
+      "number": 36,
+      "id": "PR_kwDOJcWsFs5RVmRE",
+      "title": "very small editorials",
+      "url": "https://github.com/vcstuff/high-assurance-profile/pull/36",
+      "state": "MERGED",
+      "author": "peppelinux",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-05-25T11:59:30Z",
+      "updatedAt": "2023-05-26T20:06:37Z",
+      "baseRepository": "vcstuff/high-assurance-profile",
+      "baseRefName": "main",
+      "baseRefOid": "591a60c45c9a4d2b9323d4d89722be0effb7b88a",
+      "headRepository": "peppelinux/high-assurance-profile",
+      "headRefName": "patch-1",
+      "headRefOid": "428c3ea09f585f0712048d1c7c21ff6c91f792df",
+      "closedAt": "2023-05-26T20:06:37Z",
+      "mergedAt": "2023-05-26T20:06:37Z",
+      "mergedBy": "Sakurann",
+      "mergeCommit": {
+        "oid": "249c5778274af172f98f77e48819b4c3583a2620"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJcWsFs5WL23f",
+          "commit": {
+            "abbreviatedOid": "428c3ea"
+          },
+          "author": "tlodderstedt",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "thanks",
+          "createdAt": "2023-05-26T10:45:52Z",
+          "updatedAt": "2023-05-26T10:45:52Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5WPcPY",
+          "commit": {
+            "abbreviatedOid": "428c3ea"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "thank you!",
+          "createdAt": "2023-05-26T20:06:29Z",
+          "updatedAt": "2023-05-26T20:06:29Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 40,
+      "id": "PR_kwDOJcWsFs5ReXSs",
+      "title": "add support for PKCE for OID4VCI",
+      "url": "https://github.com/vcstuff/high-assurance-profile/pull/40",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "needs discussion. might not be needed because there is wallet attestation, wallet/client is not really a public client",
+      "createdAt": "2023-05-26T21:19:39Z",
+      "updatedAt": "2023-05-26T21:49:53Z",
+      "baseRepository": "vcstuff/high-assurance-profile",
+      "baseRefName": "main",
+      "baseRefOid": "249c5778274af172f98f77e48819b4c3583a2620",
+      "headRepository": "vcstuff/high-assurance-profile",
+      "headRefName": "add-pkce",
+      "headRefOid": "f4bd5589525ae9af91d4527b82a3dd3fc9f8f2e2",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
