@@ -8,7 +8,7 @@
 <meta content="Kristina Yasuda" name="author">
 <meta content="Torsten Lodderstedt" name="author">
 <meta content="
-       This document defines a profile of OpenID for Verifiable Credentials in combination with the credential format VC-SD-JWT. The aim is to select features and to define a set of requirements for the existing specifications to enable interoperability among Issuers, Wallets and Verifiers of Credentials where a high level of security and privacy is required. The profiled specifications include OpenID for Verifiable Credential Issuance  , OpenID for Verifiable Presentations  , Self-Issued OpenID Provider v2  , and VC-SD-JWT [!I-D.ietf-terbu-sd-jwt-vc]. 
+       This document defines a profile of OpenID for Verifiable Credentials in combination with the credential format VC-SD-JWT. The aim is to select features and to define a set of requirements for the existing specifications to enable interoperability among Issuers, Wallets and Verifiers of Credentials where a high level of security and privacy is required. The profiled specifications include OpenID for Verifiable Credential Issuance  , OpenID for Verifiable Presentations  , Self-Issued OpenID Provider v2  , and VC-SD-JWT  . 
     " name="description">
 <meta content="xml2rfc 3.17.1" name="generator">
 <meta content="security" name="keyword">
@@ -1064,7 +1064,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="workgroup">OpenID Connect</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-05-26" class="published">26 May 2023</time>
+<time datetime="2023-05-28" class="published">28 May 2023</time>
     </dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
@@ -1082,7 +1082,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">High Assurance Profile of OpenID4VC with SD-JWT-VC</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document defines a profile of OpenID for Verifiable Credentials in combination with the credential format VC-SD-JWT. The aim is to select features and to define a set of requirements for the existing specifications to enable interoperability among Issuers, Wallets and Verifiers of Credentials where a high level of security and privacy is required. The profiled specifications include OpenID for Verifiable Credential Issuance <span>[<a href="#OIDF.OID4VCI" class="cite xref">OIDF.OID4VCI</a>]</span>, OpenID for Verifiable Presentations <span>[<a href="#OIDF.OID4VP" class="cite xref">OIDF.OID4VP</a>]</span>, Self-Issued OpenID Provider v2 <span>[<a href="#OIDF.SIOPv2" class="cite xref">OIDF.SIOPv2</a>]</span>, and VC-SD-JWT [!I-D.ietf-terbu-sd-jwt-vc].<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This document defines a profile of OpenID for Verifiable Credentials in combination with the credential format VC-SD-JWT. The aim is to select features and to define a set of requirements for the existing specifications to enable interoperability among Issuers, Wallets and Verifiers of Credentials where a high level of security and privacy is required. The profiled specifications include OpenID for Verifiable Credential Issuance <span>[<a href="#OIDF.OID4VCI" class="cite xref">OIDF.OID4VCI</a>]</span>, OpenID for Verifiable Presentations <span>[<a href="#OIDF.OID4VP" class="cite xref">OIDF.OID4VP</a>]</span>, Self-Issued OpenID Provider v2 <span>[<a href="#OIDF.SIOPv2" class="cite xref">OIDF.SIOPv2</a>]</span>, and VC-SD-JWT <span>[<a href="#I-D.terbu-sd-jwt-vc" class="cite xref">I-D.terbu-sd-jwt-vc</a>]</span>.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <div id="toc">
 <section id="section-toc.1">
@@ -1485,7 +1485,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-sd-jwt-vcs">
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-sd-jwt-vcs" class="section-name selfRef">SD-JWT VCs</a>
       </h2>
-<p id="section-7-1">As credential format, VC-SD-JWT as defined in [!I-D.ietf-terbu-sd-jwt-vc] MUST be used.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-7-1">As credential format, VC-SD-JWT as defined in <span>[<a href="#I-D.terbu-sd-jwt-vc" class="cite xref">I-D.terbu-sd-jwt-vc</a>]</span> MUST be used.<a href="#section-7-1" class="pilcrow">¶</a></p>
 <p id="section-7-2">In addition, this profile defines the following additional requirements.<a href="#section-7-2" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-7-3.1">Both Compact serialization and JSON serialization MUST be supported as defined in <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-7-3.1" class="pilcrow">¶</a>
@@ -1531,7 +1531,9 @@ svg :is([fill="white"], [fill^="#fff"]) {
           <tr>
             <td class="text-left" rowspan="1" colspan="1">type</td>
             <td class="text-left" rowspan="1" colspan="1"> MUST</td>
-            <td class="text-left" rowspan="1" colspan="1">draft-terbu-sd-jwt-vc</td>
+            <td class="text-left" rowspan="1" colspan="1">
+              <span>[<a href="#I-D.terbu-sd-jwt-vc" class="cite xref">I-D.terbu-sd-jwt-vc</a>]</span>
+</td>
           </tr>
           <tr>
             <td class="text-left" rowspan="1" colspan="1">status</td>
@@ -1547,27 +1549,24 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </li>
         <li class="normal" id="section-7-5.3">The <code>iss</code> claim MUST be an HTTPS URL. The <code>iss</code> value is used to obtain Issuer's signing key as defined in <a href="#issuer-key-resolution" class="auto internal xref">Section 7.1</a>.<a href="#section-7-5.3" class="pilcrow">¶</a>
 </li>
-        <li class="normal" id="section-7-5.4">The <code>type</code> JWT claim as defined in [!I-D.ietf-terbu-sd-jwt-vc].<a href="#section-7-5.4" class="pilcrow">¶</a>
+        <li class="normal" id="section-7-5.4">The <code>type</code> JWT claim as defined in <span>[<a href="#I-D.terbu-sd-jwt-vc" class="cite xref">I-D.terbu-sd-jwt-vc</a>]</span>.<a href="#section-7-5.4" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-7-5.5">The <code>cnf</code> claim <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span> MUST conform to the definition given in <span>[<a href="#I-D.terbu-sd-jwt-vc" class="cite xref">I-D.terbu-sd-jwt-vc</a>]</span>. Implementations conforming to this profile MUST include the JSON Web Key <span>[<a href="#RFC7517" class="cite xref">RFC7517</a>]</span> in the <code>jwk</code> sub claim.<a href="#section-7-5.5" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="section-7-6">Note: Currently this profile only supports presentation of credentials with cryptographic Holder Binding: holder signature is required to bind presentation to a particular transaction and audience. This is planned to be expanded, once OpenID for Verifiable Credentials adds support for other forms of Holder Binding. See <a href="https://bitbucket.org/openid/connect/issues/1537/presenting-vc-without-a-vp-using-openid4vp">https://bitbucket.org/openid/connect/issues/1537/presenting-vc-without-a-vp-using-openid4vp</a><a href="#section-7-6" class="pilcrow">¶</a></p>
-<ul class="normal">
-<li class="normal" id="section-7-7.1">The public key passed in the <code>cnf</code> claim <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span> MUST be a JSON Web Key <span>[<a href="#RFC7517" class="cite xref">RFC7517</a>]</span> contained in the <code>jwk</code> claim. <code>kid' MUST be included in the JWK in the</code>cnf` claim, since it will be used in the JOSE Header.<a href="#section-7-7.1" class="pilcrow">¶</a>
-</li>
-      </ul>
-<p id="section-7-8">Note: this requirement might change when claim-based and biometrics-based holder binding become available.<a href="#section-7-8" class="pilcrow">¶</a></p>
-<p id="section-7-9">Note: Re-using the same Credential across Verifiers, or re-using the same JWK value across multiple Credentials gives colluding Verifiers a mechanism to correlate the User. There are currently two known ways to address this with SD-JWT VCs. First is to issue multiple instances of the same credentials with different JWK values, so that if each instance of the credential is used at only one Verifier, it can be reused multiple times. Another is to use each credential only once (ephemeral credentials). It is RECOMMENDED to adopt one of these mechanisms.<a href="#section-7-9" class="pilcrow">¶</a></p>
-<p id="section-7-10">Note: If there is a requirement to communicate information about the verification status and identity assurance data of the claims about the subject, the syntax defined by @!OIDF.ekyc-ida SHOULD be used. It is up to each jurisdiction and ecosystem, whether to require it to the implementers of this profile.<a href="#section-7-10" class="pilcrow">¶</a></p>
-<p id="section-7-11">Note: If there is a requirement to provide the Subject’s identifier assigned and maintained by the Issuer, <code>sub</code> claim MAY be used. There is no requirement for a binding to exist between <code>sub</code> and <code>cnf</code> claims. See section X in @!I-D.draft-terbu-sd-jwt-vc for implementation considerations.<a href="#section-7-11" class="pilcrow">¶</a></p>
-<p id="section-7-12">Note: In some credential types, it is not desirable to include an expiration date (eg: diploma attestation). Therefore, this profile leaves its inclusion to the Issuer, or the body defining the respective credential type.<a href="#section-7-12" class="pilcrow">¶</a></p>
+<p id="section-7-6">Note: Currently this profile only supports presentation of credentials with cryptographic Holder Binding: the holder's signature is required to proof the credential is presented by the holder it was issued to. This profile might support claim-based and biometrics-based holder binding once OpenID for Verifiable Credentials adds support for other forms of Holder Binding. See <a href="https://bitbucket.org/openid/connect/issues/1537/presenting-vc-without-a-vp-using-openid4vp">https://bitbucket.org/openid/connect/issues/1537/presenting-vc-without-a-vp-using-openid4vp</a><a href="#section-7-6" class="pilcrow">¶</a></p>
+<p id="section-7-7">Note: Re-using the same Credential across Verifiers, or re-using the same JWK value across multiple Credentials gives colluding Verifiers a mechanism to correlate the User. There are currently two known ways to address this with SD-JWT VCs. First is to issue multiple instances of the same credentials with different JWK values, so that if each instance of the credential is used at only one Verifier, it can be reused multiple times. Another is to use each credential only once (ephemeral credentials). It is RECOMMENDED to adopt one of these mechanisms.<a href="#section-7-7" class="pilcrow">¶</a></p>
+<p id="section-7-8">Note: If there is a requirement to communicate information about the verification status and identity assurance data of the claims about the subject, the syntax defined by <span>[<a href="#OIDF.ekyc-ida" class="cite xref">OIDF.ekyc-ida</a>]</span> SHOULD be used. It is up to each jurisdiction and ecosystem, whether to require it to the implementers of this profile.<a href="#section-7-8" class="pilcrow">¶</a></p>
+<p id="section-7-9">Note: If there is a requirement to provide the Subject’s identifier assigned and maintained by the Issuer, <code>sub</code> claim MAY be used. There is no requirement for a binding to exist between <code>sub</code> and <code>cnf</code> claims. See section X in <span>[<a href="#I-D.terbu-sd-jwt-vc" class="cite xref">I-D.terbu-sd-jwt-vc</a>]</span> for implementation considerations.<a href="#section-7-9" class="pilcrow">¶</a></p>
+<p id="section-7-10">Note: In some credential types, it is not desirable to include an expiration date (eg: diploma attestation). Therefore, this profile leaves its inclusion to the Issuer, or the body defining the respective credential type.<a href="#section-7-10" class="pilcrow">¶</a></p>
 <div id="issuer-key-resolution">
 <section id="section-7.1">
         <h3 id="name-issuer-identification-and-k">
 <a href="#section-7.1" class="section-number selfRef">7.1. </a><a href="#name-issuer-identification-and-k" class="section-name selfRef">Issuer identification and key resolution to validate an issued Credential</a>
         </h3>
-<p id="section-7.1-1">This profile supports two ways to represent and resolves the key required to validate the issuer signature of a SD-JWT-VC, web-based key resolution and x.509 certificates.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
+<p id="section-7.1-1">This profile supports two ways to represent and resolves the key required to validate the issuer signature of a VC-SD-JWT, web PKI-based key resolution and x.509 certificates.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-7.1-2.1">Web-based key resolution: The key used to validate the Issuer's signature on the VC-SD-JWT MUST be obtained from the VC-SD-JWT issuer's metadata as defined in Section 5 of [!I-D.ietf-terbu-sd-jwt-vc]. The JOSE header <code>kid</code> MUST be used to identify the respective key.<a href="#section-7.1-2.1" class="pilcrow">¶</a>
+<li class="normal" id="section-7.1-2.1">Web-based key resolution: The key used to validate the Issuer's signature on the VC-SD-JWT MUST be obtained from the VC-SD-JWT issuer's metadata as defined in Section 5 of <span>[<a href="#I-D.terbu-sd-jwt-vc" class="cite xref">I-D.terbu-sd-jwt-vc</a>]</span>. The JOSE header <code>kid</code> MUST be used to identify the respective key.<a href="#section-7.1-2.1" class="pilcrow">¶</a>
 </li>
           <li class="normal" id="section-7.1-2.2">x.509 certificates: the VC-SD-JWT contains the issuer's certificate along with a trust chain in the <code>x5c</code> JOSE header. In this case, the <code>iss</code> value MUST be an URL with a FQDN matching a <code>dNSName</code> Subject Alternative Name (SAN) <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span> entry in the leaf certificate.<a href="#section-7.1-2.2" class="pilcrow">¶</a>
 </li>
@@ -1579,7 +1578,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#section-7.1.1" class="section-number selfRef">7.1.1. </a><a href="#name-cryptographic-holder-bindin" class="section-name selfRef">Cryptographic Holder Binding between VC and VP</a>
           </h4>
 <ul class="normal">
-<li class="normal" id="section-7.1.1-1.1">For Cryptographic Holder Binding, an HB-JWT as defined in [!I-D.ietf-terbu-sd-jwt-vc] MUST always be present when presenting a VC-SD-JWT.<a href="#section-7.1.1-1.1" class="pilcrow">¶</a>
+<li class="normal" id="section-7.1.1-1.1">For Cryptographic Holder Binding, an HB-JWT as defined in <span>[<a href="#I-D.terbu-sd-jwt-vc" class="cite xref">I-D.terbu-sd-jwt-vc</a>]</span> MUST always be present when presenting a VC-SD-JWT.<a href="#section-7.1.1-1.1" class="pilcrow">¶</a>
 </li>
           </ul>
 </section>
@@ -1631,6 +1630,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <dd>
 <span class="refAuthor">Fett, D.</span>, <span class="refAuthor">Yasuda, K.</span>, and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"Selective Disclosure for JWTs (SD-JWT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-selective-disclosure-jwt-04</span>, <time datetime="2023-04-11" class="refDate">11 April 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-04</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="I-D.terbu-sd-jwt-vc">[I-D.terbu-sd-jwt-vc]</dt>
+      <dd>
+<span class="refAuthor">Terbu, O.</span> and <span class="refAuthor">D. Fett</span>, <span class="refTitle">"SD-JWT-based Verifiable Credentials with JSON payloads (SD-JWT VC)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-terbu-sd-jwt-vc-02</span>, <time datetime="2023-05-26" class="refDate">26 May 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-terbu-sd-jwt-vc-02">https://datatracker.ietf.org/doc/html/draft-terbu-sd-jwt-vc-02</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="OIDF.OID4VCI">[OIDF.OID4VCI]</dt>
       <dd>
 <span class="refAuthor">Lodderstedt, T.</span>, <span class="refAuthor">Yasuda, K.</span>, and <span class="refAuthor">T. Looker</span>, <span class="refTitle">"OpenID for Verifiable Credential Issuance"</span>, <time datetime="2022-06-20" class="refDate">20 June 2022</time>, <span>&lt;<a href="https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html">https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html</a>&gt;</span>. </dd>
@@ -1642,6 +1645,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dt id="OIDF.SIOPv2">[OIDF.SIOPv2]</dt>
       <dd>
 <span class="refAuthor">Microsoft</span>, <span class="refAuthor">Jones, M. B.</span>, and <span class="refAuthor">T. Lodderstedt</span>, <span class="refTitle">"Self-Issued OpenID Provider V2"</span>, <time datetime="2021-12-18" class="refDate">18 December 2021</time>, <span>&lt;<a href="https://openid.net/specs/openid-connect-self-issued-v2-1_0.html">https://openid.net/specs/openid-connect-self-issued-v2-1_0.html</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="OIDF.ekyc-ida">[OIDF.ekyc-ida]</dt>
+      <dd>
+<span class="refAuthor">yes</span>, <span class="refAuthor">Fett, D.</span>, <span class="refAuthor">Haine, M.</span>, <span class="refAuthor">Pulido, A.</span>, <span class="refAuthor">Lehmann, K.</span>, and <span class="refAuthor">K. Koiwai</span>, <span class="refTitle">"OpenID Connect for Identity Assurance 1.0"</span>, <time datetime="2022-08-19" class="refDate">19 August 2022</time>, <span>&lt;<a href="https://openid.net/specs/openid-connect-4-identity-assurance-1_0-ID4.html">https://openid.net/specs/openid-connect-4-identity-assurance-1_0-ID4.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC5280">[RFC5280]</dt>
       <dd>
