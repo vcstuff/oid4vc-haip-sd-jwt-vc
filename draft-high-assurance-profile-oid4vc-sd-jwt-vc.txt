@@ -187,6 +187,8 @@ Table of Contents
    *  MUST support sender-constrained Tokens using a mechanism as
       defined in [I-D.ietf-oauth-dpop].
 
+   *  MUST support [RFC7636] with S256 as the code challenge method.
+
    Both Wallet initiated and Issuer initiated issuance is supported.
 
 4.1.  Credential Offer
@@ -531,6 +533,11 @@ Table of Contents
    [RFC7519]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web Token
               (JWT)", RFC 7519, DOI 10.17487/RFC7519, May 2015,
               <https://www.rfc-editor.org/info/rfc7519>.
+
+   [RFC7636]  Sakimura, N., Ed., Bradley, J., and N. Agarwal, "Proof Key
+              for Code Exchange by OAuth Public Clients", RFC 7636,
+              DOI 10.17487/RFC7636, September 2015,
+              <https://www.rfc-editor.org/info/rfc7636>.
 
    [RFC7800]  Jones, M., Bradley, J., and H. Tschofenig, "Proof-of-
               Possession Key Semantics for JSON Web Tokens (JWTs)",
