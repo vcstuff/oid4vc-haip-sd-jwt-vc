@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-05-28T00:29:15.071876+00:00",
+  "timestamp": "2023-05-30T00:28:28.994288+00:00",
   "repo": "vcstuff/high-assurance-profile",
   "labels": [
     {
@@ -894,9 +894,24 @@
       "labels": [],
       "body": "just for the reference [FAPI](https://openid.net/specs/openid-financial-api-part-1-1_0.html) defines\r\n\r\n> - shall require and use a key of size 2048 bits or larger for RSA algorithms;\r\n> - shall require and use a key of size 160 bits or larger for elliptic curve algorithms;",
       "createdAt": "2023-05-26T21:14:58Z",
-      "updatedAt": "2023-05-26T21:14:58Z",
+      "updatedAt": "2023-05-28T11:43:59Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@danielfett @paulbastian What do you think?",
+          "createdAt": "2023-05-28T11:34:07Z",
+          "updatedAt": "2023-05-28T11:34:07Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "NONE",
+          "body": "I would define a very limited number of crypto suites that shall be used, obviously ES256 but not so much else",
+          "createdAt": "2023-05-28T11:43:59Z",
+          "updatedAt": "2023-05-28T11:43:59Z"
+        }
+      ]
     },
     {
       "number": 41,
@@ -910,7 +925,31 @@
       "labels": [],
       "body": "I was surprised to find that [FAPI](https://openid.net/specs/openid-financial-api-part-1-1_0.html) does not mandate refresh tokens. maybe this profile should also relax mandating refresh tokens..\r\n> the use of refresh tokens instead of long-lived access tokens for both public and confidential clients is recommended.",
       "createdAt": "2023-05-26T21:43:25Z",
-      "updatedAt": "2023-05-26T21:43:42Z",
+      "updatedAt": "2023-05-28T11:32:42Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Agree to reconsider. We should be very sure and clear why we think refresh tokens are needed.\n\nIn my opinion, refresh tokens can help to achieve a better UX in the following cases:\n- Silent refresh of credentials, which is especially useful if the credential doesn't have a dynamic status management mechanisms. Given we will have that mechanism through the status list, we won't not necessarily need refresh tokens for this scenario.\n- Obtaining fresh copies of a credential that shall be used on a per RP basis or as ephemeral credentials. I don't see a compelling alternative to refresh tokens for this scenario. Do perhaps, we can make the use/implementation of refresh tokens depending on the privacy requirements of the deployment.",
+          "createdAt": "2023-05-28T11:32:41Z",
+          "updatedAt": "2023-05-28T11:32:41Z"
+        }
+      ]
+    },
+    {
+      "number": 42,
+      "id": "I_kwDOJcWsFs5nLwjC",
+      "title": "Add ARF reference",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/42",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-05-29T18:59:09Z",
+      "updatedAt": "2023-05-29T18:59:09Z",
       "closedAt": null,
       "comments": []
     }
@@ -921,25 +960,35 @@
       "id": "PR_kwDOJcWsFs5RJ7Me",
       "title": "proposed changes after first review",
       "url": "https://github.com/vcstuff/high-assurance-profile/pull/33",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "tlodderstedt",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2023-05-23T14:44:18Z",
-      "updatedAt": "2023-05-26T20:48:47Z",
+      "updatedAt": "2023-05-29T18:33:58Z",
       "baseRepository": "vcstuff/high-assurance-profile",
       "baseRefName": "main",
       "baseRefOid": "249c5778274af172f98f77e48819b4c3583a2620",
       "headRepository": "vcstuff/high-assurance-profile",
       "headRefName": "tl-review",
-      "headRefOid": "2a01d7141958480ff54b71b2ebb3f66cb51b9c0b",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "headRefOid": "8628dff9ae0a5d6bec3f18b2d0891dad71437e4d",
+      "closedAt": "2023-05-29T18:33:58Z",
+      "mergedAt": "2023-05-29T18:33:58Z",
+      "mergedBy": "Sakurann",
+      "mergeCommit": {
+        "oid": "f39a98b4b4cd691eacce2bc4ed70c6ea0843d71a"
+      },
+      "comments": [
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@Sakurann incorporated your suggestions. Please review again. ",
+          "createdAt": "2023-05-28T09:47:46Z",
+          "updatedAt": "2023-05-28T09:47:46Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJcWsFs5V-p4w",
@@ -1300,7 +1349,7 @@
             "abbreviatedOid": "582a463"
           },
           "author": "tlodderstedt",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-05-26T06:28:33Z",
@@ -1320,7 +1369,7 @@
             "abbreviatedOid": "72f6e5d"
           },
           "author": "tlodderstedt",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-05-26T10:31:07Z",
@@ -1340,7 +1389,7 @@
             "abbreviatedOid": "72f6e5d"
           },
           "author": "tlodderstedt",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-05-26T10:33:37Z",
@@ -1360,7 +1409,7 @@
             "abbreviatedOid": "cdc2eb4"
           },
           "author": "tlodderstedt",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-05-26T10:40:08Z",
@@ -1380,7 +1429,7 @@
             "abbreviatedOid": "cdc2eb4"
           },
           "author": "tlodderstedt",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-05-26T10:45:20Z",
@@ -1465,6 +1514,39 @@
               "updatedAt": "2023-05-26T20:48:47Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5WUIe5",
+          "commit": {
+            "abbreviatedOid": "582a463"
+          },
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-05-28T09:36:24Z",
+          "updatedAt": "2023-05-28T09:36:24Z",
+          "comments": [
+            {
+              "originalPosition": 195,
+              "body": "reworked cnf/holder binding text",
+              "createdAt": "2023-05-28T09:36:24Z",
+              "updatedAt": "2023-05-28T09:36:24Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5WaemW",
+          "commit": {
+            "abbreviatedOid": "8628dff"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Looks great. Thank you!",
+          "createdAt": "2023-05-29T18:33:46Z",
+          "updatedAt": "2023-05-29T18:33:46Z",
+          "comments": []
         }
       ]
     },
@@ -1528,26 +1610,50 @@
       "id": "PR_kwDOJcWsFs5ReXSs",
       "title": "add support for PKCE for OID4VCI",
       "url": "https://github.com/vcstuff/high-assurance-profile/pull/40",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "Sakurann",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "needs discussion. might not be needed because there is wallet attestation, wallet/client is not really a public client",
       "createdAt": "2023-05-26T21:19:39Z",
-      "updatedAt": "2023-05-26T21:49:53Z",
+      "updatedAt": "2023-05-29T18:42:24Z",
       "baseRepository": "vcstuff/high-assurance-profile",
       "baseRefName": "main",
       "baseRefOid": "249c5778274af172f98f77e48819b4c3583a2620",
       "headRepository": "vcstuff/high-assurance-profile",
       "headRefName": "add-pkce",
       "headRefOid": "f4bd5589525ae9af91d4527b82a3dd3fc9f8f2e2",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "closedAt": "2023-05-29T18:42:23Z",
+      "mergedAt": "2023-05-29T18:42:23Z",
+      "mergedBy": "tlodderstedt",
+      "mergeCommit": {
+        "oid": "7906c1907cfcfb13089d16878deff28393540149"
+      },
+      "comments": [
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> needs discussion. might not be needed because there is wallet attestation, wallet/client is not really a public client\r\n\r\nPKCE is not only needed for public clients since an authorization code can be replayed with different \"instances\" of the same confidential client. The key point is whether every instance is identified and authenticated separately, in which case the code would be bound to that instance. I would not assume that wallet attestation allows the AS to identify a certain wallet/client instance, that seems a to strong assumption to me. ",
+          "createdAt": "2023-05-28T09:51:11Z",
+          "updatedAt": "2023-05-28T09:51:11Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJcWsFs5WULy-",
+          "commit": {
+            "abbreviatedOid": "f4bd558"
+          },
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "I think that makes sense. ",
+          "createdAt": "2023-05-28T09:51:28Z",
+          "updatedAt": "2023-05-28T09:51:28Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
