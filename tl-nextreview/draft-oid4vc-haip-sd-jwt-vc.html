@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>High Assurance Profile of OpenID4VC with SD-JWT VC</title>
+<title>OpenID4VC High Assurance Interoperability Profile with SD-JWT VC</title>
 <meta content="Kristina Yasuda" name="author">
 <meta content="Torsten Lodderstedt" name="author">
 <meta content="
@@ -14,7 +14,7 @@
 <meta content="security" name="keyword">
 <meta content="openid4vc" name="keyword">
 <meta content="sd-jwt" name="keyword">
-<meta content="draft-high-assurance-profile-oid4vc-sd-jwt-vc-latest" name="ietf.draft">
+<meta content="draft-oid4vc-haip-sd-jwt-vc-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.17.1
     Python 3.11.3
@@ -31,7 +31,7 @@
     six 1.16.0
     wcwidth 0.2.6
 -->
-<link href="draft-high-assurance-profile-oid4vc-sd-jwt-vc.xml" rel="alternate" type="application/rfc+xml">
+<link href="draft-oid4vc-haip-sd-jwt-vc.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
 <style type="text/css">@font-face {
   font-family: 'Lora';
@@ -1048,7 +1048,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <table class="ears">
 <thead><tr>
 <td class="left"></td>
-<td class="center">draft-high-assurance-profile-oid4vc-sd-j</td>
+<td class="center">draft-oid4vc-haip-sd-jwt-vc</td>
 <td class="right">May 2023</td>
 </tr></thead>
 <tfoot><tr>
@@ -1079,7 +1079,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">High Assurance Profile of OpenID4VC with SD-JWT VC</h1>
+<h1 id="title">OpenID4VC High Assurance Interoperability Profile with SD-JWT VC</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">This document defines a profile of OpenID for Verifiable Credentials in combination with the credential format SD-JWT VC. The aim is to select features and to define a set of requirements for the existing specifications to enable interoperability among Issuers, Wallets and Verifiers of Credentials where a high level of security and privacy is required. The profiled specifications include OpenID for Verifiable Credential Issuance <span>[<a href="#OIDF.OID4VCI" class="cite xref">OIDF.OID4VCI</a>]</span>, OpenID for Verifiable Presentations <span>[<a href="#OIDF.OID4VP" class="cite xref">OIDF.OID4VP</a>]</span>, Self-Issued OpenID Provider v2 <span>[<a href="#OIDF.SIOPv2" class="cite xref">OIDF.SIOPv2</a>]</span>, and SD-JWT VC <span>[<a href="#I-D.terbu-sd-jwt-vc" class="cite xref">I-D.terbu-sd-jwt-vc</a>]</span>.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
@@ -1449,7 +1449,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
           <code>client_id_scheme</code> parameter MUST be present in the Authorization Request.<a href="#section-5-1.5" class="pilcrow">¶</a>
 </li>
         <li class="normal" id="section-5-1.6">
-          <code>client_id_scheme</code> value MUST be either <code>x509_san_dns</code> or <code>verifier_attestation</code>. Wallet MUST support both. Verifier MUST support at least one. (pending OID4VCI PR#485 for x509 and PR #524 for verifier_attestation)<a href="#section-5-1.6" class="pilcrow">¶</a>
+          <code>client_id_scheme</code> value MUST be either <code>x509_san_dns</code> or <code>verifier_attestation</code>. Wallet MUST support both. Verifier MUST support at least one. (pending OID4VCI PR #524 for verifier_attestation)<a href="#section-5-1.6" class="pilcrow">¶</a>
 </li>
         <li class="normal" id="section-5-1.7">Presentation Definition JSON object MUST be sent using a <code>presentation_definition</code> parameter.<a href="#section-5-1.7" class="pilcrow">¶</a>
 </li>
@@ -1594,14 +1594,21 @@ svg :is([fill="white"], [fill^="#fff"]) {
       <h2 id="name-crypto-suites">
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-crypto-suites" class="section-name selfRef">Crypto Suites</a>
       </h2>
-<p id="section-8-1">Issuers, holders and verifiers MUST support P-256 (secp256r1) as a key type with ES256 JWT algorithm for signing and signature validation whenever this profiles requires to do so:
-* SD-JWT-VC
-* Wallet Instance Attestation
-* DPoP
-* HB JWT
-* Authorization request during presentation<a href="#section-8-1" class="pilcrow">¶</a></p>
-<p id="section-8-2">SHA256 MUST be supported by all the entities as the hash algorithm to generate and validate the digests in the SD-JWT VC.<a href="#section-8-2" class="pilcrow">¶</a></p>
-<p id="section-8-3">Note: When using this profile with other cryptosuites, it is recommended to be explicit about which entity is required to support which curve for signing and/or signature validation<a href="#section-8-3" class="pilcrow">¶</a></p>
+<p id="section-8-1">Issuers, holders and verifiers MUST support P-256 (secp256r1) as a key type with ES256 JWT algorithm for signing and signature validation whenever this profiles requires to do so:<a href="#section-8-1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-8-2.1">SD-JWT-VC<a href="#section-8-2.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-8-2.2">Wallet Instance Attestation<a href="#section-8-2.2" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-8-2.3">DPoP<a href="#section-8-2.3" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-8-2.4">HB JWT<a href="#section-8-2.4" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-8-2.5">Authorization request during presentation<a href="#section-8-2.5" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="section-8-3">SHA256 MUST be supported by all the entities as the hash algorithm to generate and validate the digests in the SD-JWT VC.<a href="#section-8-3" class="pilcrow">¶</a></p>
+<p id="section-8-4">Note: When using this profile with other cryptosuites, it is recommended to be explicit about which entity is required to support which curve for signing and/or signature validation<a href="#section-8-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="implementations-considerations">

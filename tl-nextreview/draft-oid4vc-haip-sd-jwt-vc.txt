@@ -9,8 +9,8 @@ OpenID Connect                                                 K. Yasuda
                                                              31 May 2023
 
 
-           High Assurance Profile of OpenID4VC with SD-JWT VC
-          draft-high-assurance-profile-oid4vc-sd-jwt-vc-latest
+    OpenID4VC High Assurance Interoperability Profile with SD-JWT VC
+                   draft-oid4vc-haip-sd-jwt-vc-latest
 
 Abstract
 
@@ -291,8 +291,8 @@ Table of Contents
 
    *  client_id_scheme value MUST be either x509_san_dns or
       verifier_attestation.  Wallet MUST support both.  Verifier MUST
-      support at least one. (pending OID4VCI PR#485 for x509 and PR #524
-      for verifier_attestation)
+      support at least one. (pending OID4VCI PR #524 for
+      verifier_attestation)
 
    *  Presentation Definition JSON object MUST be sent using a
       presentation_definition parameter.
@@ -452,9 +452,17 @@ Table of Contents
 
    Issuers, holders and verifiers MUST support P-256 (secp256r1) as a
    key type with ES256 JWT algorithm for signing and signature
-   validation whenever this profiles requires to do so: * SD-JWT-VC *
-   Wallet Instance Attestation * DPoP * HB JWT * Authorization request
-   during presentation
+   validation whenever this profiles requires to do so:
+
+   *  SD-JWT-VC
+
+   *  Wallet Instance Attestation
+
+   *  DPoP
+
+   *  HB JWT
+
+   *  Authorization request during presentation
 
    SHA256 MUST be supported by all the entities as the hash algorithm to
    generate and validate the digests in the SD-JWT VC.
