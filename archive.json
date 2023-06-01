@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-05-30T00:28:28.994288+00:00",
+  "timestamp": "2023-06-01T00:38:18.618516+00:00",
   "repo": "vcstuff/high-assurance-profile",
   "labels": [
     {
@@ -952,6 +952,38 @@
       "updatedAt": "2023-05-29T18:59:09Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 43,
+      "id": "I_kwDOJcWsFs5nTrq6",
+      "title": "Define key resolution mechanisms for verifier attestation, wallet attestation, and status list issuers",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/43",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The module drafts for client attestation (used for wallet attestation), verifier attestation (OID4VP) and status list define the schemas of the different assertions but do leave flexibility regarding the way keys are represented and resolved. The Interoperability profile will defines the concrete mechanisms to be used to achieve interoperability in the context of the profile. \r\n\r\nCurrent idea is to support the same mechanisms currently used for SD-JWT VCs, web based key lookup and x.509 certificates. We  could add one section with key resolution mechanisms and state where those are used. ",
+      "createdAt": "2023-05-31T00:52:51Z",
+      "updatedAt": "2023-05-31T00:52:51Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 44,
+      "id": "I_kwDOJcWsFs5nTr90",
+      "title": "Integrate Client Assertions",
+      "url": "https://github.com/vcstuff/high-assurance-profile/issues/44",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "- define scheme for wallet attestation (on top of schema defined in client attestation draft)\r\n- ...",
+      "createdAt": "2023-05-31T00:54:57Z",
+      "updatedAt": "2023-05-31T00:54:57Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -1654,6 +1686,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 45,
+      "id": "PR_kwDOJcWsFs5R10Jx",
+      "title": "TL next review",
+      "url": "https://github.com/vcstuff/high-assurance-profile/pull/45",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-05-31T23:25:29Z",
+      "updatedAt": "2023-05-31T23:25:29Z",
+      "baseRepository": "vcstuff/high-assurance-profile",
+      "baseRefName": "main",
+      "baseRefOid": "7906c1907cfcfb13089d16878deff28393540149",
+      "headRepository": "vcstuff/high-assurance-profile",
+      "headRefName": "tl-nextreview",
+      "headRefOid": "db11dd725305d8758ec7faa56275117bed8b09b8",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
