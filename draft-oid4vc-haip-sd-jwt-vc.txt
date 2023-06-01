@@ -6,23 +6,23 @@ OpenID Connect                                                 K. Yasuda
                                                                Microsoft
                                                           T. Lodderstedt
                                                                  yes.com
-                                                             29 May 2023
+                                                             1 June 2023
 
 
-           High Assurance Profile of OpenID4VC with SD-JWT-VC
-          draft-high-assurance-profile-oid4vc-sd-jwt-vc-latest
+    OpenID4VC High Assurance Interoperability Profile with SD-JWT VC
+                   draft-oid4vc-haip-sd-jwt-vc-latest
 
 Abstract
 
    This document defines a profile of OpenID for Verifiable Credentials
-   in combination with the credential format VC-SD-JWT.  The aim is to
+   in combination with the credential format SD-JWT VC.  The aim is to
    select features and to define a set of requirements for the existing
    specifications to enable interoperability among Issuers, Wallets and
    Verifiers of Credentials where a high level of security and privacy
    is required.  The profiled specifications include OpenID for
    Verifiable Credential Issuance [OIDF.OID4VCI], OpenID for Verifiable
    Presentations [OIDF.OID4VP], Self-Issued OpenID Provider v2
-   [OIDF.SIOPv2], and VC-SD-JWT [I-D.terbu-sd-jwt-vc].
+   [OIDF.SIOPv2], and SD-JWT VC [I-D.terbu-sd-jwt-vc].
 
 Table of Contents
 
@@ -74,12 +74,10 @@ Table of Contents
    The profile uses OpenID for Verifiable Credential Issuance
    [OIDF.OID4VCI] and OpenID for Verifiable Presentations [OIDF.OID4VP]
    as the base protocols for issuance and presentation of Credentials,
-   respectively.  The credential format used in the profile are W3C
-   Verifiable Credentials secured using Selective Disclosure for JWTs
-   (SD-JWT) according to the VC Data Model v2.0 [VC-DATA], designated as
-   VC-SD-JWTs.  Additionally, considerations are given on how
-   deployments can perform a combined issuance of credentials in both
-   VC-SD-JWT and ISO mdoc [ISO.18013-5] formats.
+   respectively.  The credential format used is SD-JWT VC as specified
+   in [I-D.terbu-sd-jwt-vc].  Additionally, considerations are given on
+   how deployments can perform a combined issuance of credentials in
+   both SD-JWT VC and ISO mdoc [ISO.18013-5] formats.
 
    A full list of the open standards used in this profile can be found
    in Overview of the Open Standards Requirements (reference).
@@ -96,24 +94,25 @@ Table of Contents
 
 2.  Terminology
 
-   ToDo: Mostly reference other specs.
+   This specification uses the terms "Holder", "Issuer", "Verifier", and
+   "Verifiable Credential" as defined in [I-D.terbu-sd-jwt-vc].
 
 3.  Scope
 
    The following aspects are in scope of this interoperability profile:
 
-   *  Protocol for issuance of the Credentials online (can be both
+   *  Protocol for issuance of the Verifiable Credentials (can be both
       remote and in-person) (OID4VCI)
 
-   *  Protocol for presentation of Credentials online (can be both
-      remote and in-person) (OID4VP)
+   *  Protocol for online presentation of Verifiable Credentials (can be
+      both remote and in-person) (OID4VP)
 
    *  Protocol for User Authentication by the Wallet at a Verifier (SIOP
       v2)
 
    *  Wallet Attestation (during Credential issuance)
 
-   *  Credential Format
+   *  Credential Format (SD-JWT VC)
 
    *  Status Management of the Credentials, including revocation
 
@@ -145,16 +144,16 @@ Table of Contents
       certain types of credentials, authorization of the Verifier to
       receive certain types of credentials.
 
-   *  Protocol for presentation of Credentials over BLE for offline use-
-      cases.
+   *  Protocol for presentation of Verifiable Credentials for offline
+      use-cases, e.g. over BLE.
 
 3.2.  Scenarios/Business Requirements
 
-   *  Combined Issuance of SD-JWT and mdoc
+   *  Combined Issuance of SD-JWT VC and mdoc
 
    *  Both issuer-initiated and wallet-initiated issuance
 
-   *  eIDAS credentials as defined in ARF 1.0
+   *  eIDAS PID and (Q)EAA as defined in eIDAS ARF 1.0
 
 3.3.  Standards Requirements
 
@@ -170,7 +169,7 @@ Table of Contents
        +------------------------------+--------+--------+----------+
        | SIOPv2                       | N/A    | MUST   | SHOULD   |
        +------------------------------+--------+--------+----------+
-       | VC-SD-JWT                    | MUST   | MUST   | MUST     |
+       | SD-JWT VC                    | MUST   | MUST   | MUST     |
        +------------------------------+--------+--------+----------+
 
                                   Table 1
@@ -193,7 +192,7 @@ Table of Contents
 
 4.1.  Credential Offer
 
-   *  Both Grant Types authorization_code and
+   *  The Grant Types authorization_code and
       urn:ietf:params:oauth:grant-type:pre-authorized_code MUST be
       supported as defined in Section 4.1.1 in [OIDF.OID4VCI]
 
@@ -292,8 +291,8 @@ Table of Contents
 
    *  client_id_scheme value MUST be either x509_san_dns or
       verifier_attestation.  Wallet MUST support both.  Verifier MUST
-      support at least one. (pending OID4VCI PR#485 for x509 and PR #524
-      for verifier_attestation)
+      support at least one. (pending OID4VCI PR #524 for
+      verifier_attestation)
 
    *  Presentation Definition JSON object MUST be sent using a
       presentation_definition parameter.
@@ -331,7 +330,7 @@ Table of Contents
 
 7.  SD-JWT VCs
 
-   As credential format, VC-SD-JWT as defined in [I-D.terbu-sd-jwt-vc]
+   As credential format, SD-JWT VCs as defined in [I-D.terbu-sd-jwt-vc]
    MUST be used.
 
    In addition, this profile defines the following additional
@@ -424,16 +423,16 @@ Table of Contents
       Credential
 
    This profile supports two ways to represent and resolves the key
-   required to validate the issuer signature of a VC-SD-JWT, web PKI-
+   required to validate the issuer signature of a SD-JWT VC, web PKI-
    based key resolution and x.509 certificates.
 
    *  Web-based key resolution: The key used to validate the Issuer's
-      signature on the VC-SD-JWT MUST be obtained from the VC-SD-JWT
+      signature on the SD-JWT VC MUST be obtained from the SD-JWT VC
       issuer's metadata as defined in Section 5 of
       [I-D.terbu-sd-jwt-vc].  The JOSE header kid MUST be used to
       identify the respective key.
 
-   *  x.509 certificates: the VC-SD-JWT contains the issuer's
+   *  x.509 certificates: the SD-JWT VC contains the issuer's
       certificate along with a trust chain in the x5c JOSE header.  In
       this case, the iss value MUST be an URL with a FQDN matching a
       dNSName Subject Alternative Name (SAN) [RFC5280] entry in the leaf
@@ -446,16 +445,24 @@ Table of Contents
 7.1.1.  Cryptographic Holder Binding between VC and VP
 
    *  For Cryptographic Holder Binding, an HB-JWT as defined in
-      [I-D.terbu-sd-jwt-vc] MUST always be present when presenting a VC-
-      SD-JWT.
+      [I-D.terbu-sd-jwt-vc] MUST always be present when presenting a SD-
+      JWT VC.
 
 8.  Crypto Suites
 
    Issuers, holders and verifiers MUST support P-256 (secp256r1) as a
    key type with ES256 JWT algorithm for signing and signature
-   validation whenever this profiles requires to do so: * SD-JWT-VC *
-   Wallet Instance Attestation * DPoP * HB JWT * Authorization request
-   during presentation
+   validation whenever this profiles requires to do so:
+
+   *  SD-JWT-VC
+
+   *  Wallet Instance Attestation
+
+   *  DPoP
+
+   *  HB JWT
+
+   *  Authorization request during presentation
 
    SHA256 MUST be supported by all the entities as the hash algorithm to
    generate and validate the digests in the SD-JWT VC.
@@ -563,14 +570,10 @@ Table of Contents
               Mobile driving license (mDL) application", 2021,
               <https://www.iso.org/standard/69084.html>.
 
-   [VC-DATA]  Sporny, M., Longley, D., and D. Chadwick, "Verifiable
-              Credentials Data Model v2.0", 4 May 2023,
-              <https://www.w3.org/TR/vc-data-model-2.0/>.
-
 Appendix A.  Combined Issuance of SD-JWT VC and mdocs
 
-   *  If combined issuance is required, Batch Credential Endpoint MUST
-      be supported.
+   *  If combined issuance is required, the Batch Credential Endpoint
+      MUST be supported.
 
 Appendix B.  JSON Schema for the supported Presentation Definition
              properties
