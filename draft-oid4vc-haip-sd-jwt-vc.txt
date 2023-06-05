@@ -6,7 +6,7 @@ OpenID Connect                                                 K. Yasuda
                                                                Microsoft
                                                           T. Lodderstedt
                                                                  yes.com
-                                                             1 June 2023
+                                                             5 June 2023
 
 
     OpenID4VC High Assurance Interoperability Profile with SD-JWT VC
