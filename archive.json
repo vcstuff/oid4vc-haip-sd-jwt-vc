@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-06-06T00:29:40.194304+00:00",
+  "timestamp": "2023-06-11T00:32:33.859793+00:00",
   "repo": "vcstuff/oid4vc-haip-sd-jwt-vc",
   "labels": [
     {
@@ -774,9 +774,17 @@
       "labels": [],
       "body": "> scope parameter MUST be communicated from the Issuer to the Wallet either in the Credential Offer, or Credential Issuer metadata.\r\n\r\nWe need to define the respective issuer metadata.",
       "createdAt": "2023-05-18T14:31:21Z",
-      "updatedAt": "2023-05-25T14:18:02Z",
+      "updatedAt": "2023-06-09T00:29:11Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "https://bitbucket.org/openid/connect/pull-requests/520",
+          "createdAt": "2023-06-09T00:29:11Z",
+          "updatedAt": "2023-06-09T00:29:11Z"
+        }
+      ]
     },
     {
       "number": 31,
@@ -790,9 +798,24 @@
       "labels": [],
       "body": "I'm not sure whether the profile should make the JSON Serialization mandatory. Are there libraries avalaible? Are there enough use cases justifying it? So far, I see JAdES as a technical mechanisms for long term validation only. But long term validation is a pretty advanced topic and might only be needed for some credentials. ",
       "createdAt": "2023-05-18T15:04:55Z",
-      "updatedAt": "2023-05-18T15:04:55Z",
+      "updatedAt": "2023-06-09T00:35:04Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I don't think JSON serialization should be mandatory as a starting point..\r\n",
+          "createdAt": "2023-06-09T00:30:06Z",
+          "updatedAt": "2023-06-09T00:30:06Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "PR #46 ",
+          "createdAt": "2023-06-09T00:35:04Z",
+          "updatedAt": "2023-06-09T00:35:04Z"
+        }
+      ]
     },
     {
       "number": 32,
@@ -1728,6 +1751,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 46,
+      "id": "PR_kwDOJcWsFs5SkbQR",
+      "title": "remove the requirement for the JSON serialization",
+      "url": "https://github.com/vcstuff/oid4vc-haip-sd-jwt-vc/pull/46",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Issue #31",
+      "createdAt": "2023-06-09T00:34:56Z",
+      "updatedAt": "2023-06-09T00:34:56Z",
+      "baseRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "218029acf83d211d5262d14df554c85f14af7d71",
+      "headRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
+      "headRefName": "json-serialization",
+      "headRefOid": "84b64d0da05ae1cfc0e249e01dea173b498164cf",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
