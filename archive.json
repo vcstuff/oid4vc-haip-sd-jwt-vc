@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-06-11T00:32:33.859793+00:00",
+  "timestamp": "2023-06-15T00:29:02.917542+00:00",
   "repo": "vcstuff/oid4vc-haip-sd-jwt-vc",
   "labels": [
     {
@@ -1764,7 +1764,7 @@
       "labels": [],
       "body": "Issue #31",
       "createdAt": "2023-06-09T00:34:56Z",
-      "updatedAt": "2023-06-09T00:34:56Z",
+      "updatedAt": "2023-06-13T19:53:25Z",
       "baseRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "218029acf83d211d5262d14df554c85f14af7d71",
@@ -1775,8 +1775,56 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "comments": [
+        {
+          "author": "paulbastian",
+          "authorAssociation": "NONE",
+          "body": "There is the usecase for having issuer multisignatures which enables handy PQC-safetyness, but its just another edge case for now, so I#m fine with this for now",
+          "createdAt": "2023-06-13T19:53:12Z",
+          "updatedAt": "2023-06-13T19:53:12Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJcWsFs5YB5pa",
+          "commit": {
+            "abbreviatedOid": "84b64d0"
+          },
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2023-06-13T11:11:22Z",
+          "updatedAt": "2023-06-13T11:12:53Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n* Compact serialization MUST be supported as defined in [@!I-D.ietf-oauth-selective-disclosure-jwt]. JSON serialization MAY be supported.\r\n```",
+              "createdAt": "2023-06-13T11:11:22Z",
+              "updatedAt": "2023-06-13T11:12:53Z"
+            },
+            {
+              "originalPosition": 8,
+              "body": "I added the text to the bullet above and suggest to remove this line as it breaks the flow. The table must directly follow line 181.\r\n",
+              "createdAt": "2023-06-13T11:12:46Z",
+              "updatedAt": "2023-06-13T11:12:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5YF84H",
+          "commit": {
+            "abbreviatedOid": "84b64d0"
+          },
+          "author": "paulbastian",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-06-13T19:53:25Z",
+          "updatedAt": "2023-06-13T19:53:25Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
