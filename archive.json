@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-06-15T00:29:02.917542+00:00",
+  "timestamp": "2023-06-18T00:33:17.759590+00:00",
   "repo": "vcstuff/oid4vc-haip-sd-jwt-vc",
   "labels": [
     {
@@ -636,7 +636,7 @@
       "labels": [],
       "body": "do we assume that the key used for the signature of the SIOPv2 id token must be attestable with a wallet instance attestation? from @peppelinux",
       "createdAt": "2023-05-16T20:24:05Z",
-      "updatedAt": "2023-05-25T13:52:20Z",
+      "updatedAt": "2023-06-17T18:59:44Z",
       "closedAt": null,
       "comments": [
         {
@@ -687,6 +687,13 @@
           "body": "It is not the wallet instance issuing the id token, it is the holder. The attestation answers the question whether the wallet can be trusted to securely manage the keys on behalf of the holder. There is no need to create any relationship between the keys. ",
           "createdAt": "2023-05-25T13:52:20Z",
           "updatedAt": "2023-05-25T13:52:20Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "Hi.\r\nThis is a very important discussion. \r\nQuestions:\r\na) How does the wallet instance attestation look like?\r\nb) Does wallet instance attestation contain information about the wallet keys?\r\nc) To my understanding Wallet Instance Attestation (WIA) is issued by the wallet provider to the wallet instance. I assume WIA is cryptographically bound to one of the keys managed in the wallet.\r\n\r\nIs the following statement correct (in the context of this specification): Since the wallet is in the same flow presenting a wallet attestation (presentation is signed by 1 key) and an ID token (can be signed by another key) the verifier trusts the ID token since it can trust the wallet attestation? In other words, if a box is attested so that I can trust it, I trust everything that comes out of that box?\r\nAssumption: Wallet attestation doesn't contain any info about the key used to sign the ID token.\r\n\r\nIf true, a MITM is possible (if wallet holder is rouge).",
+          "createdAt": "2023-06-17T18:59:44Z",
+          "updatedAt": "2023-06-17T18:59:44Z"
         }
       ]
     },
@@ -1005,6 +1012,54 @@
       "body": "- define scheme for wallet attestation (on top of schema defined in client attestation draft)\r\n- ...",
       "createdAt": "2023-05-31T00:54:57Z",
       "updatedAt": "2023-05-31T00:54:57Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 47,
+      "id": "I_kwDOJcWsFs5o1soR",
+      "title": "Describe how SD-JWT VC profile ties into OID4VP security mechanisms ",
+      "url": "https://github.com/vcstuff/oid4vc-haip-sd-jwt-vc/issues/47",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Profile must describe how the `nonce` and `aud` in the HB JWT is determined from request parameters and context of the transaction. ",
+      "createdAt": "2023-06-15T13:59:38Z",
+      "updatedAt": "2023-06-15T13:59:38Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 48,
+      "id": "I_kwDOJcWsFs5pAzGz",
+      "title": "client_id_scheme doesn't support Federation",
+      "url": "https://github.com/vcstuff/oid4vc-haip-sd-jwt-vc/issues/48",
+      "state": "OPEN",
+      "author": "peppelinux",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "In https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/draft-oid4vc-haip-sd-jwt-vc.html#section-5-1.5\r\n\r\nI read \r\n\r\n````\r\nclient_id_scheme value MUST be either x509_san_dns or verifier_attestation. Wallet MUST support both. Verifier MUST support at least one. (pending OID4VCI PR #524 for verifier_attestation)\r\n````\r\n\r\nthis is not compatible with the italian implementation that uses OIDC Federation, with a value of \"entity_id\"\r\nwe ask to extend this configuration using a wider approach\r\n\r\nlet's consider that for interop purpose both federation and x509 are used, this parameter is exclusive",
+      "createdAt": "2023-06-17T12:42:39Z",
+      "updatedAt": "2023-06-17T12:42:39Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 49,
+      "id": "I_kwDOJcWsFs5pBTbL",
+      "title": "\"High-Assurance Level\" according to which act/regulation?",
+      "url": "https://github.com/vcstuff/oid4vc-haip-sd-jwt-vc/issues/49",
+      "state": "OPEN",
+      "author": "alenhorvat",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Hi,\r\n\r\nTitle of this specification begins with High LoA ...\r\na) According to which regulation/specification/act?\r\nb) Are there other levels of assurance? \r\nc) What about low, qualified?\r\n\r\n- eIDAS v1\r\n- NIST\r\n- other?\r\n\r\nI'm asking since level of assurance is typically addressing\r\n- identification -> IAL\r\n- authentication -> AAL\r\n- e-signature/e-sealing (e.g., as per eIDAS)\r\n\r\nNamely, the profile defined in this document works with\r\n- any IAL/AAL\r\n- any e-signature/e-sealing assurance level",
+      "createdAt": "2023-06-17T18:22:33Z",
+      "updatedAt": "2023-06-17T18:23:00Z",
       "closedAt": null,
       "comments": []
     }
