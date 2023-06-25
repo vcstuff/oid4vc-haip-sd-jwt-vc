@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-06-18T00:33:17.759590+00:00",
+  "timestamp": "2023-06-25T00:36:39.655791+00:00",
   "repo": "vcstuff/oid4vc-haip-sd-jwt-vc",
   "labels": [
     {
@@ -868,7 +868,7 @@
       "labels": [],
       "body": "Use of DNSname SAN in credentials with x5c and web based lookup forces hosting of the jwt-issuer metadata at the top of the FQDN. Can we relax the requirement and allow for issuer URLs with path components?",
       "createdAt": "2023-05-23T16:22:19Z",
-      "updatedAt": "2023-05-24T23:17:55Z",
+      "updatedAt": "2023-06-22T23:45:43Z",
       "closedAt": null,
       "comments": [
         {
@@ -877,6 +877,13 @@
           "body": "copying comment form Issuer #6.\r\n\r\n---\r\nI think what I would like to see is a clear validation logic, something like:\r\n- when only x509 is used (kid JOSE header is not present), iss is a SAN. when verifying, must be an absolute match btw the value in iss and x509 leaf cert.\r\n- when only web PKI based approach is used (x5c JOSE header is not present), iss is a URL where the key is hosted, it can include path and subdomain.\r\n- when both x509 and web PKI based are used (both x5c and kid header is present), iss is a URL where the key is hosted, can include path and subdomain. Verifier must strip down path and subdomain and use only the domain when comparing with the SAN in x509 cert.\r\n\r\nnot sure it is clean to use header parameters as a switch, but that's how the verifier will determine which mechanism is used, right?\r\n\r\ndon't know if it is a limitation, but essentially, Web PKI based approach must host the keys at the domain that is also in the x509 cert.",
           "createdAt": "2023-05-24T23:17:55Z",
           "updatedAt": "2023-05-24T23:17:55Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Oidc federation should be included in this specs since It Is a web pki that enables static trust chain to be submitted in a request or in any kind of jws, without requiring web Discovery to a domain name unless the chain Is not expired\r\n\r\n",
+          "createdAt": "2023-06-22T23:45:43Z",
+          "updatedAt": "2023-06-22T23:45:43Z"
         }
       ]
     },
