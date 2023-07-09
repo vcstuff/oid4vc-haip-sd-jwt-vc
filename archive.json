@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-06-25T00:36:39.655791+00:00",
+  "timestamp": "2023-07-09T00:37:45.345132+00:00",
   "repo": "vcstuff/oid4vc-haip-sd-jwt-vc",
   "labels": [
     {
@@ -57,6 +57,11 @@
       "name": "needs-implementation-experience",
       "description": "",
       "color": "5D0117"
+    },
+    {
+      "name": "urgent",
+      "description": "",
+      "color": "7EDF80"
     }
   ],
   "issues": [
@@ -896,10 +901,12 @@
       "author": "Sakurann",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "urgent"
+      ],
       "body": "see if we need to re-add the following sentence based on how [this PR](https://github.com/vcstuff/draft-terbu-sd-jwt-vc/issues/108) in sd-jwt-vc does:\r\n> Further claims, either registered or private JWT claims, can be added to the credential as required by the respective credential type, or determined by the Issuer or the Holder. All claims that are not understood by implementations MUST be ignored, as defined in section 4, [@!RFC7519].",
       "createdAt": "2023-05-26T20:24:33Z",
-      "updatedAt": "2023-05-26T20:24:33Z",
+      "updatedAt": "2023-07-06T11:25:21Z",
       "closedAt": null,
       "comments": []
     },
@@ -999,10 +1006,12 @@
       "author": "tlodderstedt",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "urgent"
+      ],
       "body": "The module drafts for client attestation (used for wallet attestation), verifier attestation (OID4VP) and status list define the schemas of the different assertions but do leave flexibility regarding the way keys are represented and resolved. The Interoperability profile will defines the concrete mechanisms to be used to achieve interoperability in the context of the profile. \r\n\r\nCurrent idea is to support the same mechanisms currently used for SD-JWT VCs, web based key lookup and x.509 certificates. We  could add one section with key resolution mechanisms and state where those are used. ",
       "createdAt": "2023-05-31T00:52:51Z",
-      "updatedAt": "2023-05-31T00:52:51Z",
+      "updatedAt": "2023-07-06T11:24:40Z",
       "closedAt": null,
       "comments": []
     },
@@ -1011,15 +1020,15 @@
       "id": "I_kwDOJcWsFs5nTr90",
       "title": "Integrate Client Assertions",
       "url": "https://github.com/vcstuff/oid4vc-haip-sd-jwt-vc/issues/44",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "tlodderstedt",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "- define scheme for wallet attestation (on top of schema defined in client attestation draft)\r\n- ...",
       "createdAt": "2023-05-31T00:54:57Z",
-      "updatedAt": "2023-05-31T00:54:57Z",
-      "closedAt": null,
+      "updatedAt": "2023-07-06T11:24:23Z",
+      "closedAt": "2023-07-06T11:24:23Z",
       "comments": []
     },
     {
@@ -1031,10 +1040,12 @@
       "author": "tlodderstedt",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "urgent"
+      ],
       "body": "Profile must describe how the `nonce` and `aud` in the HB JWT is determined from request parameters and context of the transaction. ",
       "createdAt": "2023-06-15T13:59:38Z",
-      "updatedAt": "2023-06-15T13:59:38Z",
+      "updatedAt": "2023-07-06T11:24:13Z",
       "closedAt": null,
       "comments": []
     },
@@ -1069,6 +1080,52 @@
       "updatedAt": "2023-06-17T18:23:00Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 50,
+      "id": "I_kwDOJcWsFs5qxeXb",
+      "title": "Add SD-JWT VC profile for OID4VC",
+      "url": "https://github.com/vcstuff/oid4vc-haip-sd-jwt-vc/issues/50",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [
+        "urgent"
+      ],
+      "body": "also incorporate topics described in #47",
+      "createdAt": "2023-07-06T11:21:36Z",
+      "updatedAt": "2023-07-06T11:23:59Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 51,
+      "id": "I_kwDOJcWsFs5qxe1X",
+      "title": "Add Wallet Attestation Profile",
+      "url": "https://github.com/vcstuff/oid4vc-haip-sd-jwt-vc/issues/51",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [
+        "tlodderstedt"
+      ],
+      "labels": [
+        "urgent"
+      ],
+      "body": "define how wallet attestation is implemented based on client attestation draft ",
+      "createdAt": "2023-07-06T11:22:36Z",
+      "updatedAt": "2023-07-07T08:20:17Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I think we also need to add claims to the `proof` issuance request parameter to indicate key type and user authentication method used to protect access to the key, so the issuer could refuse to process if its requirements are not met. I guess this also requires respective metadata to let the wallet know in advance what is required.",
+          "createdAt": "2023-07-07T08:20:17Z",
+          "updatedAt": "2023-07-07T08:20:17Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -1887,6 +1944,159 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 52,
+      "id": "PR_kwDOJcWsFs5U5OLM",
+      "title": "added wallet attestation scheme",
+      "url": "https://github.com/vcstuff/oid4vc-haip-sd-jwt-vc/pull/52",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "<!-- If this pull request closes an issue, please mention the issue number below -->\r\nCloses # 51<!-- Issue # here -->\r\n\r\n## \ud83d\udcd1 Description\r\n<!-- Add a brief description of the pr -->\r\nThis PR adds a Wallet Attestation scheme to the spec. \r\n\r\n## Preview Link\r\n\r\n<!-- Update the link below to provide reviewers with a convenient link to view a rendered version of the PR-->\r\n<!-- In general the link should be of the form https://github.com/<repo-name>/<branch-name>/<draft-name>.html-->\r\n\r\n[click here for rendered preview of PR](https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/wallet-attestation/draft-oid4vc-haip-sd-jwt-vc.html)",
+      "createdAt": "2023-07-07T08:59:59Z",
+      "updatedAt": "2023-07-08T07:37:39Z",
+      "baseRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "218029acf83d211d5262d14df554c85f14af7d71",
+      "headRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
+      "headRefName": "wallet-attestation",
+      "headRefOid": "74b182a39472cacb3d5f94c35cf302429acb9561",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "The PR is not complete yet. It lacks the list of values allowed (or at least ore-defined) for user authentication and key type. I would also like to suggest to adopt the WebAuthn attestation claims instead of defining new claims and values. \r\n\r\n[key-protection-types](https://fidoalliance.org/specs/common-specs/fido-registry-v2.2-rd-20210525.html#key-protection-types)\r\n\r\n[user-verification-methods](https://fidoalliance.org/specs/common-specs/fido-registry-v2.2-rd-20210525.html#user-verification-methods)",
+          "createdAt": "2023-07-07T09:06:33Z",
+          "updatedAt": "2023-07-07T09:06:33Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "NONE",
+          "body": "For a start I would recommend to limit the possible values as follows.\r\nKey protection Types:\r\n- Software\r\n- TEE\r\n- Strongbox\r\n- Secure Enclave\r\n- Secure Element\r\n\r\nUser Verification Methods:\r\n- System-Biometry\r\n- System-PIN\r\n- Internal-Biometry\r\n- Internal-PIN\r\n- SecureElement-PIN",
+          "createdAt": "2023-07-07T16:44:20Z",
+          "updatedAt": "2023-07-07T16:44:20Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJcWsFs5ao4Vb",
+          "commit": {
+            "abbreviatedOid": "74b182a"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-07-08T07:24:37Z",
+          "updatedAt": "2023-07-08T07:37:38Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "In addition to what? To the claims defined in draft-ietf-looker?",
+              "createdAt": "2023-07-08T07:24:37Z",
+              "updatedAt": "2023-07-08T07:37:38Z"
+            },
+            {
+              "originalPosition": 9,
+              "body": "are the values taken from somewhere or defined in HAIP? If the latter, why not use snake case?",
+              "createdAt": "2023-07-08T07:27:04Z",
+              "updatedAt": "2023-07-08T07:37:38Z"
+            },
+            {
+              "originalPosition": 10,
+              "body": "Again, where are the values being defined..? If not in HAIP should it point somewhere?",
+              "createdAt": "2023-07-08T07:36:10Z",
+              "updatedAt": "2023-07-08T07:37:38Z"
+            },
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\nTo obtain the issuer's Public key for verification, wallet attestions MUST support web-based key resolution as defined in Section 5 of [@!I-D.terbu-sd-jwt-vc]. The JOSE header `kid` MUST be used to identify the respective key.\n```\n",
+              "createdAt": "2023-07-08T07:37:15Z",
+              "updatedAt": "2023-07-08T07:37:38Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 53,
+      "id": "PR_kwDOJcWsFs5U5S79",
+      "title": "added requirement to support web-based key resolution for verifier at\u2026",
+      "url": "https://github.com/vcstuff/oid4vc-haip-sd-jwt-vc/pull/53",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "[preview](https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/verifier-attestion-keys/draft-oid4vc-haip-sd-jwt-vc.html)",
+      "createdAt": "2023-07-07T09:15:36Z",
+      "updatedAt": "2023-07-08T07:40:06Z",
+      "baseRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "218029acf83d211d5262d14df554c85f14af7d71",
+      "headRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
+      "headRefName": "verifier-attestion-keys",
+      "headRefOid": "99f95192ba3d79ae205aa770fe2198f6376a9620",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJcWsFs5ao4qs",
+          "commit": {
+            "abbreviatedOid": "99f9519"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-07-08T07:39:57Z",
+          "updatedAt": "2023-07-08T07:40:05Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "```suggestion\n   * To obtain the issuer's Public key for verification, verifier attestions MUST support web-based key resolution as defined in Section 5 of [@!I-D.terbu-sd-jwt-vc]. The JOSE header `kid` MUST be used to identify the respective key.\n```\nIt should be clearer web-based key resolution for which key",
+              "createdAt": "2023-07-08T07:39:57Z",
+              "updatedAt": "2023-07-08T07:40:05Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 54,
+      "id": "PR_kwDOJcWsFs5U-U7O",
+      "title": "remove reference to a merged VCI PR 520",
+      "url": "https://github.com/vcstuff/oid4vc-haip-sd-jwt-vc/pull/54",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #30\r\n\r\nnot sure about the sentence on how to obtain scopes, but felt like something had to be said about it",
+      "createdAt": "2023-07-08T00:49:50Z",
+      "updatedAt": "2023-07-08T00:49:50Z",
+      "baseRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "218029acf83d211d5262d14df554c85f14af7d71",
+      "headRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
+      "headRefName": "Sakurann-using-scopes",
+      "headRefOid": "f33c13e13c065068b5101b4b5adbdeb351cbee04",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
