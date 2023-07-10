@@ -6,7 +6,7 @@ OpenID Connect                                                 K. Yasuda
                                                                Microsoft
                                                           T. Lodderstedt
                                                                  yes.com
-                                                             9 June 2023
+                                                            10 July 2023
 
 
     OpenID4VC High Assurance Interoperability Profile with SD-JWT VC
@@ -236,8 +236,8 @@ Table of Contents
 
 4.3.  Token Endpoint
 
-   *  The Wallets MUST perform client authentication as defined in [!I-
-      D.ietf-looker-key-attestation-client-authentication].
+   *  The Wallets MUST perform client authentication as defined in
+      [I-D.looker-oauth-attestation-based-client-auth].
 
    *  Refresh tokens MUST be supported for credential refresh.
 
@@ -336,13 +336,11 @@ Table of Contents
    In addition, this profile defines the following additional
    requirements.
 
-   *  Compact serialization MUST be supported as defined in
-      [I-D.ietf-oauth-selective-disclosure-jwt].
+   *  Both Compact serialization and JSON serialization MUST be
+      supported as defined in [I-D.ietf-oauth-selective-disclosure-jwt].
 
    *  The following JWT Claims MUST be supported Content (differentiate
       issuance & presentation)
-
-   JSON serialization MAY be supported if required by the jurisdiction.
 
     +========+================================+=======================+
     | Claim  | SD-JWT as issued by the Issuer | Normative Definition  |
@@ -494,9 +492,17 @@ Table of Contents
    [I-D.ietf-oauth-selective-disclosure-jwt]
               Fett, D., Yasuda, K., and B. Campbell, "Selective
               Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-selective-disclosure-jwt-04, 11
-              April 2023, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-oauth-selective-disclosure-jwt-04>.
+              Draft, draft-ietf-oauth-selective-disclosure-jwt-05, 30
+              June 2023, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-oauth-selective-disclosure-jwt-05>.
+
+   [I-D.looker-oauth-attestation-based-client-auth]
+              Looker, T. and P. Bastian, "OAuth 2.0 Attestation-Based
+              Client Authentication", Work in Progress, Internet-Draft,
+              draft-looker-oauth-attestation-based-client-auth-00, 10
+              July 2023,
+              <https://datatracker.ietf.org/api/v1/doc/document/draft-
+              looker-oauth-attestation-based-client-auth/>.
 
    [I-D.terbu-sd-jwt-vc]
               Terbu, O. and D. Fett, "SD-JWT-based Verifiable
