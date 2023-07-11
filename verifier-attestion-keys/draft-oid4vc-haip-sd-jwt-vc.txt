@@ -6,7 +6,7 @@ OpenID Connect                                                 K. Yasuda
                                                                Microsoft
                                                           T. Lodderstedt
                                                                  yes.com
-                                                             7 July 2023
+                                                            11 July 2023
 
 
     OpenID4VC High Assurance Interoperability Profile with SD-JWT VC
@@ -294,9 +294,10 @@ Table of Contents
       support at least one. (pending OID4VCI PR #524 for
       verifier_attestation)
 
-   *  Verifier attestions MUST support web-based key resolution as
-      defined in Section 5 of [I-D.terbu-sd-jwt-vc].  The JOSE header
-      kid MUST be used to identify the respective key.
+   *  To obtain the issuer's Public key for verification, verifier
+      attestions MUST support web-based key resolution as defined in
+      Section 5 of [I-D.terbu-sd-jwt-vc].  The JOSE header kid MUST be
+      used to identify the respective key.
 
    *  Presentation Definition JSON object MUST be sent using a
       presentation_definition parameter.
