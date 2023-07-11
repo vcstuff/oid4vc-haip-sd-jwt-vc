@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-07-09T00:37:45.345132+00:00",
+  "timestamp": "2023-07-11T00:29:18.411465+00:00",
   "repo": "vcstuff/oid4vc-haip-sd-jwt-vc",
   "labels": [
     {
@@ -2097,6 +2097,46 @@
       "mergeCommit": null,
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 55,
+      "id": "PR_kwDOJcWsFs5VDoHS",
+      "title": "changed reference to client attestation draft",
+      "url": "https://github.com/vcstuff/oid4vc-haip-sd-jwt-vc/pull/55",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-07-10T07:58:55Z",
+      "updatedAt": "2023-07-10T15:02:47Z",
+      "baseRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "218029acf83d211d5262d14df554c85f14af7d71",
+      "headRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
+      "headRefName": "update-clt-attestion-ref",
+      "headRefOid": "d8be09f9d417a37c6d266a4ec8a10ca6839937f2",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJcWsFs5avIj8",
+          "commit": {
+            "abbreviatedOid": "d8be09f"
+          },
+          "author": "c2bo",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-07-10T15:02:47Z",
+          "updatedAt": "2023-07-10T15:02:47Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
