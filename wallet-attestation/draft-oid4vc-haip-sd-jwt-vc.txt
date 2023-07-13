@@ -271,7 +271,7 @@ Table of Contents
       be a secure element (in case of a wallet residing on a smartphone)
       or a Cloud-HSM (in case of a cloud wallet).  This specification
       defines the following values for key_type: Software, TEE,
-      Strongbox, Secure Enclave, and Secure Element.
+      Strongbox, Secure Enclave, Secure Element and External-HSM.
 
    *  user_authentication: this claim asserts the security mechanism the
       wallet can use to authenticate access to private keys.  This
