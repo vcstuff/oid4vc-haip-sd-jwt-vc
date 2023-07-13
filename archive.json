@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-07-11T00:29:18.411465+00:00",
+  "timestamp": "2023-07-13T00:32:46.882674+00:00",
   "repo": "vcstuff/oid4vc-haip-sd-jwt-vc",
   "labels": [
     {
@@ -1095,9 +1095,17 @@
       ],
       "body": "also incorporate topics described in #47",
       "createdAt": "2023-07-06T11:21:36Z",
-      "updatedAt": "2023-07-06T11:23:59Z",
+      "updatedAt": "2023-07-12T16:18:53Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "PR #56 ",
+          "createdAt": "2023-07-12T16:18:53Z",
+          "updatedAt": "2023-07-12T16:18:53Z"
+        }
+      ]
     },
     {
       "number": 51,
@@ -1115,7 +1123,7 @@
       ],
       "body": "define how wallet attestation is implemented based on client attestation draft ",
       "createdAt": "2023-07-06T11:22:36Z",
-      "updatedAt": "2023-07-07T08:20:17Z",
+      "updatedAt": "2023-07-12T16:18:42Z",
       "closedAt": null,
       "comments": [
         {
@@ -1124,6 +1132,13 @@
           "body": "I think we also need to add claims to the `proof` issuance request parameter to indicate key type and user authentication method used to protect access to the key, so the issuer could refuse to process if its requirements are not met. I guess this also requires respective metadata to let the wallet know in advance what is required.",
           "createdAt": "2023-07-07T08:20:17Z",
           "updatedAt": "2023-07-07T08:20:17Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "PR #52 ",
+          "createdAt": "2023-07-12T16:18:42Z",
+          "updatedAt": "2023-07-12T16:18:42Z"
         }
       ]
     }
@@ -1957,13 +1972,13 @@
       "labels": [],
       "body": "<!-- If this pull request closes an issue, please mention the issue number below -->\r\nCloses # 51<!-- Issue # here -->\r\n\r\n## \ud83d\udcd1 Description\r\n<!-- Add a brief description of the pr -->\r\nThis PR adds a Wallet Attestation scheme to the spec. \r\n\r\n## Preview Link\r\n\r\n<!-- Update the link below to provide reviewers with a convenient link to view a rendered version of the PR-->\r\n<!-- In general the link should be of the form https://github.com/<repo-name>/<branch-name>/<draft-name>.html-->\r\n\r\n[click here for rendered preview of PR](https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/wallet-attestation/draft-oid4vc-haip-sd-jwt-vc.html)",
       "createdAt": "2023-07-07T08:59:59Z",
-      "updatedAt": "2023-07-08T07:37:39Z",
+      "updatedAt": "2023-07-12T15:38:33Z",
       "baseRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "218029acf83d211d5262d14df554c85f14af7d71",
       "headRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
       "headRefName": "wallet-attestation",
-      "headRefOid": "74b182a39472cacb3d5f94c35cf302429acb9561",
+      "headRefOid": "2d10a1bd4429680f48a79ba1afeabae7a66b5521",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -1982,6 +1997,13 @@
           "body": "For a start I would recommend to limit the possible values as follows.\r\nKey protection Types:\r\n- Software\r\n- TEE\r\n- Strongbox\r\n- Secure Enclave\r\n- Secure Element\r\n\r\nUser Verification Methods:\r\n- System-Biometry\r\n- System-PIN\r\n- Internal-Biometry\r\n- Internal-PIN\r\n- SecureElement-PIN",
           "createdAt": "2023-07-07T16:44:20Z",
           "updatedAt": "2023-07-07T16:44:20Z"
+        },
+        {
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@paulbastian can you please provide descriptions for the different values of key type and user authentication?",
+          "createdAt": "2023-07-11T09:00:03Z",
+          "updatedAt": "2023-07-11T09:00:03Z"
         }
       ],
       "reviews": [
@@ -2022,6 +2044,198 @@
               "updatedAt": "2023-07-08T07:37:38Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5a00cU",
+          "commit": {
+            "abbreviatedOid": "74b182a"
+          },
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-07-11T08:59:10Z",
+          "updatedAt": "2023-07-11T08:59:11Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "We define it in HAIP. I'm neutral on the style. Snake case would be consistent with https://fidoalliance.org/specs/common-specs/fido-registry-v2.2-rd-20210525.html#key-protection-types. ",
+              "createdAt": "2023-07-11T08:59:10Z",
+              "updatedAt": "2023-07-11T08:59:11Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5a00mv",
+          "commit": {
+            "abbreviatedOid": "74b182a"
+          },
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-07-11T08:59:32Z",
+          "updatedAt": "2023-07-11T08:59:32Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "I would prefer to reuse WebAuthn values. Let's discuss.",
+              "createdAt": "2023-07-11T08:59:32Z",
+              "updatedAt": "2023-07-11T08:59:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5a8uun",
+          "commit": {
+            "abbreviatedOid": "74b182a"
+          },
+          "author": "peppelinux",
+          "authorAssociation": "MEMBER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2023-07-12T09:00:00Z",
+          "updatedAt": "2023-07-12T09:17:42Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "if WebAuthn values are used I'm ok with that, we then need a ref to them",
+              "createdAt": "2023-07-12T09:00:00Z",
+              "updatedAt": "2023-07-12T09:17:42Z"
+            },
+            {
+              "originalPosition": 12,
+              "body": "Do we have to defined error codes and messages for that?",
+              "createdAt": "2023-07-12T09:00:45Z",
+              "updatedAt": "2023-07-12T09:17:42Z"
+            },
+            {
+              "originalPosition": 27,
+              "body": "I'm not in favor of duplicating iss to sub\r\n\r\nI have the strong assumption that the wallet provider and the wallet instance are different entities\r\n\r\nIn my current implementation we have decided to use the jwk thumbprint to identify the wallet instance and then we use this value in the sub\r\n\r\nthere's a good agreement to simply remove the sub claim, WDYT about this?",
+              "createdAt": "2023-07-12T09:17:24Z",
+              "updatedAt": "2023-07-12T09:17:42Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5a873W",
+          "commit": {
+            "abbreviatedOid": "74b182a"
+          },
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-07-12T09:27:59Z",
+          "updatedAt": "2023-07-12T09:27:59Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "It's not a duplication. It represents the fact that the wallet provider issues an attestation about itself. Whatever component uses this attestation with a valid proof of possession of the key in `cnf` can be considered a valid \"representative\" of the wallet provider. That is sufficient for authentication and authorization. \r\nThis value is especially used a `client_id`. If you want to make the client id instance specific, you can do so. I would prefer to have a client_id identifying the wallet provider. This information can be used in self service and customer care and makes sense to the user.  ",
+              "createdAt": "2023-07-12T09:27:59Z",
+              "updatedAt": "2023-07-12T09:28:55Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5a884d",
+          "commit": {
+            "abbreviatedOid": "74b182a"
+          },
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-07-12T09:29:32Z",
+          "updatedAt": "2023-07-12T09:29:33Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "you mean in the credential issuance response?",
+              "createdAt": "2023-07-12T09:29:32Z",
+              "updatedAt": "2023-07-12T09:29:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5a8_CO",
+          "commit": {
+            "abbreviatedOid": "74b182a"
+          },
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-07-12T09:33:00Z",
+          "updatedAt": "2023-07-12T09:33:00Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "In addition to \"the definition given in [!I-D.ietf-looker-key-attestation-client-authentication]\"",
+              "createdAt": "2023-07-12T09:33:00Z",
+              "updatedAt": "2023-07-12T09:33:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5a_uLg",
+          "commit": {
+            "abbreviatedOid": "2d10a1b"
+          },
+          "author": "paulbastian",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-07-12T15:33:17Z",
+          "updatedAt": "2023-07-12T15:33:17Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\n* `key_type`: this claim asserts the security mechanism the wallet can use to manage private keys. This capability is based on the capabilities of the execution environent of the wallet, this might be a secure element (in case of a wallet residing on a smartphone) or a Cloud-HSM (in case of a cloud wallet). This specification defines the following values for `key_type`: `Software`, `TEE`, `Strongbox`, `Secure Enclave`, `Secure Element` and `External-HSM`.\r\n```",
+              "createdAt": "2023-07-12T15:33:17Z",
+              "updatedAt": "2023-07-12T15:33:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5a_uso",
+          "commit": {
+            "abbreviatedOid": "2d10a1b"
+          },
+          "author": "paulbastian",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-07-12T15:34:09Z",
+          "updatedAt": "2023-07-12T15:34:09Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "```suggestion\r\n  \"sub\": \"https://wallet.example.com/version/1.0.0\",\r\n```",
+              "createdAt": "2023-07-12T15:34:09Z",
+              "updatedAt": "2023-07-12T15:34:09Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJcWsFs5a_wxf",
+          "commit": {
+            "abbreviatedOid": "2d10a1b"
+          },
+          "author": "paulbastian",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-07-12T15:38:32Z",
+          "updatedAt": "2023-07-12T15:38:33Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "With regard to eIDAS terms: `iss` describes the Wallet Solution Provider and `sub` descibes the specific Wallet Solution of a Wallet Instance",
+              "createdAt": "2023-07-12T15:38:32Z",
+              "updatedAt": "2023-07-12T15:38:33Z"
+            }
+          ]
         }
       ]
     },
@@ -2037,13 +2251,13 @@
       "labels": [],
       "body": "[preview](https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/verifier-attestion-keys/draft-oid4vc-haip-sd-jwt-vc.html)",
       "createdAt": "2023-07-07T09:15:36Z",
-      "updatedAt": "2023-07-08T07:40:06Z",
+      "updatedAt": "2023-07-11T08:54:41Z",
       "baseRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "218029acf83d211d5262d14df554c85f14af7d71",
       "headRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
       "headRefName": "verifier-attestion-keys",
-      "headRefOid": "99f95192ba3d79ae205aa770fe2198f6376a9620",
+      "headRefOid": "a74ee1ba2a33bc842eb6ffcfd25c8c8a91af6726",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -2084,7 +2298,7 @@
       "labels": [],
       "body": "Closes #30\r\n\r\nnot sure about the sentence on how to obtain scopes, but felt like something had to be said about it",
       "createdAt": "2023-07-08T00:49:50Z",
-      "updatedAt": "2023-07-08T00:49:50Z",
+      "updatedAt": "2023-07-11T08:54:14Z",
       "baseRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "218029acf83d211d5262d14df554c85f14af7d71",
@@ -2096,7 +2310,28 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJcWsFs5a0yGh",
+          "commit": {
+            "abbreviatedOid": "f33c13e"
+          },
+          "author": "tlodderstedt",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2023-07-11T08:54:12Z",
+          "updatedAt": "2023-07-11T08:54:13Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "How would you envision the process based on metadata? I assume the wallet would need to search for a certain credential type and determine the issuer specific scope value? ",
+              "createdAt": "2023-07-11T08:54:12Z",
+              "updatedAt": "2023-07-11T08:54:13Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 55,
@@ -2137,6 +2372,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 56,
+      "id": "PR_kwDOJcWsFs5VVH76",
+      "title": "sd-jwt vc profile for oid4vc",
+      "url": "https://github.com/vcstuff/oid4vc-haip-sd-jwt-vc/pull/56",
+      "state": "OPEN",
+      "author": "tlodderstedt",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-07-12T16:17:47Z",
+      "updatedAt": "2023-07-12T16:20:43Z",
+      "baseRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "218029acf83d211d5262d14df554c85f14af7d71",
+      "headRepository": "vcstuff/oid4vc-haip-sd-jwt-vc",
+      "headRefName": "sd-jwt-profile",
+      "headRefOid": "6395526a1737a8af86e06ee67b027a34b8a814e1",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
